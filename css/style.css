@@ -1,0 +1,99 @@
+#main_body{
+    width: 100%;
+}
+.top_part{
+    margin-left: 180px;
+    width: 80%;
+    height: 1700px;
+    background-color: blanchedalmond;
+}
+.bottom_part{
+    height: 400px;
+    background-color: #585858;
+}
+#head_leading{
+    width: 100%;
+}
+#head_leading div{
+    float: left;
+    margin-top: 230px;
+    margin-left: 50px;
+    font-size: 50px;
+    font-weight: bold;
+}
+#logo{
+    float: left;
+}
+#logo img{
+}
+#download{
+    width: 50%;
+    margin-left: 5%;
+}
+#download img{
+    float: left;
+    margin-top: 40px;
+    width:100%;
+}
+.body{
+    
+}
+#bgstory{
+    margin-left: 5%;
+    margin-top: 50px;
+    float: left;
+    background-image: url(../images/bg2.jpg);
+    height: 400px;
+    width: 800px;
+}
+#bgstory_title{
+    font-size: 50px;
+    height: 80px;
+    line-height: 80px;
+    margin-left: 20px;
+    color: white;
+}
+#bgstory_text{
+    color: white;
+    font-size: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 40px;
+}
+#introduction{
+    margin-left: 5%;
+    margin-top: 50px;
+    float: left;
+    background-image: url(../images/bg2.jpg);
+    height: 430px;
+    width: 800px;  
+}
+#introduction_title{
+    font-size: 50px;
+    height: 70px;
+    line-height: 70px;
+    margin-left: 20px;
+    color: white;
+}
+#introduction_text{
+    color: white;
+    font-size: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+#character{
+    float: right;
+    margin-right: 5%;
+    margin-top: 50px;
+    background-image: url(../images/bg2.jpg);
+    height: 820px;
+    width: 500px;  
+}
+#character_title{
+    font-size: 50px;
+    height: 70px;
+    line-height: 70px;
+    margin-left: 20px;
+    color: white;
+}
