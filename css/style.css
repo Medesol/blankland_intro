@@ -5,11 +5,25 @@
 .top_part{
     margin-left: 20%;
     width: 60%;
-    height: 1700px;
+    height: 1600px;
 }
 .bottom_part{
-    height: 400px;
+    height: 100px;
     background-color: #585858;
+    width: 60%;
+    margin-left: 20%;
+}
+#bottom_left{
+    float: left;
+    width: 30%;
+}
+#bottom_right{
+    float: right;
+    width: 60%;
+    text-align: center;
+}
+#bottom_right_text{
+    
 }
 #head_leading{
     width: 100%;
@@ -18,8 +32,9 @@
     float: left;
     margin-top: 20%;
     margin-left: 4%;
-    font-size: 31px;
+    font-size: 25px;
     font-weight: bold;
+    color: white;
 }
 #logo{
     float: left;
@@ -97,4 +112,16 @@
     line-height: 70px;
     margin-left: 20px;
     color: white;
+}
+#character_text{
+    color: white;
+    font-size: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+#divide{
+    width: 60%;
+    margin-left: 20%;
+    border: 1px white solid;
 }
