@@ -15,11 +15,14 @@
 }
 #bottom_left{
     float: left;
-    width: 30%;
+    width: 33%;
+}
+#bottom_left img{
+    width: 100%;
 }
 #bottom_right{
     float: right;
-    width: 60%;
+    width: 65%;
     text-align: center;
 }
 #bottom_right_text{
@@ -119,9 +122,4 @@
     margin-left: 50px;
     margin-right: 50px;
     margin-top: 20px;
-}
-#divide{
-    width: 60%;
-    margin-left: 20%;
-    border: 1px white solid;
 }
