@@ -1,0 +1,9 @@
+body{
+    background-image: url(../images/art_bg.jpg);
+    padding-top: 50px;
+    color: whitesmoke;
+}
+
+.logo{
+    width: 200px;
+}
