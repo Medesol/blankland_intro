@@ -1,5 +1,6 @@
 body{
     background-image: url(../images/art_bg.jpg);
+    background-position: center top;
     padding-top: 50px;
     color: whitesmoke;
 }
