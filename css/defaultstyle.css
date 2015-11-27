@@ -1,10 +1,46 @@
 body{
-    background-image: url(../images/art_bg.jpg);
+    background-image: url(../images/bg-new2.jpg);
     background-position: center top;
+    background-size: auto;
+    background-repeat:round;
     padding-top: 50px;
+    font-family: 微软雅黑;
     color: whitesmoke;
 }
 
 .logo{
     width: 200px;
 }
+
+.watertext{
+    color: #98cfef;
+}
+
+.windtext{
+    color: #c9c9c9;
+}
+
+.landtext{
+    color: #bfa37b;
+}
+
+.firetext{
+    color: #e0968f;
+}
+
+.fire{
+    background-image: url(../images/fire-mask.png);
+}
+
+.water{
+    background-image: url(../images/water-mask.png);
+}
+
+.land{
+    background-image: url(../images/land-mask.png);
+}
+
+.wind{
+    background-image: url(../images/wind-mask.png);
+}
+
