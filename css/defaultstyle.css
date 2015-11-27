@@ -8,6 +8,7 @@ body{
     color: whitesmoke;
 }
 
+
 .logo{
     width: 200px;
 }
@@ -44,3 +45,17 @@ body{
     background-image: url(../images/wind-mask.png);
 }
 
+.fill{
+    width: 100%;
+}
+
+.artfont{
+    font-size: 2em;
+    font-family: fantasy;
+    color: whitesmoke;
+}
+
+h1{
+    line-height: 150px;
+    height: 150px;
+}
