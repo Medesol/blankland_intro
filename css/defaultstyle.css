@@ -1,8 +1,8 @@
 body {
     background-image: url(../images/bg-new2.jpg);
     background-position: center top;
-    background-size: auto;
-    background-repeat: round;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding-top: 50px;
     font-family: 微软雅黑;
     color: whitesmoke;
@@ -63,7 +63,19 @@ body {
     color: whitesmoke;
 }
 
+.copyright {
+    background-color: rgba(0, 0, 0, .4);
+}
+
+.content {
+    background-color: rgba(50, 30, 20, .5);
+}
+
 h1 {
     line-height: 150px;
     height: 150px;
+}
+
+h1>small {
+    font-size: 0.5em;
 }
