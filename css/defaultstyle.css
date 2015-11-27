@@ -1,61 +1,69 @@
-body{
+body {
     background-image: url(../images/bg-new2.jpg);
     background-position: center top;
     background-size: auto;
-    background-repeat:round;
+    background-repeat: round;
     padding-top: 50px;
     font-family: 微软雅黑;
     color: whitesmoke;
 }
 
-
-.logo{
+.logo {
     width: 200px;
 }
 
-.watertext{
-    color: #98cfef;
+.watertext {
+    color: #1672a0;
 }
 
-.windtext{
-    color: #c9c9c9;
+.windtext {
+    color: #565f56;
 }
 
-.landtext{
-    color: #bfa37b;
+.landtext {
+    color: #805619;
 }
 
-.firetext{
-    color: #e0968f;
+.firetext {
+    color: #99382f;
 }
 
-.fire{
-    background-image: url(../images/fire-mask.png);
+.shadowbox{
+    padding: 19px;
+    margin-bottom: 20px;
+    -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
+    border-radius: 3px;
+    border: 0px;
 }
 
-.water{
+.fire {
+    background-color: rgba(153, 56, 47, .7);
+}
+
+.water {
     background-image: url(../images/water-mask.png);
 }
 
-.land{
+.land {
     background-image: url(../images/land-mask.png);
 }
 
-.wind{
+.wind {
     background-image: url(../images/wind-mask.png);
 }
 
-.fill{
+.fill {
     width: 100%;
 }
 
-.artfont{
+.artfont {
     font-size: 2em;
     font-family: fantasy;
     color: whitesmoke;
 }
 
-h1{
+h1 {
     line-height: 150px;
     height: 150px;
 }
