@@ -7,28 +7,22 @@ body {
     font-family: 微软雅黑;
     color: whitesmoke;
 }
-
 .logo {
     width: 200px;
 }
-
 .watertext {
     color: #1672a0;
 }
-
 .windtext {
     color: #565f56;
 }
-
 .landtext {
     color: #805619;
 }
-
 .firetext {
     color: #99382f;
 }
-
-.shadowbox{
+.shadowbox {
     padding: 19px;
     margin-bottom: 20px;
     -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
@@ -36,46 +30,39 @@ body {
     border-radius: 3px;
     border: 0px;
 }
-
 .fire {
     background-color: rgba(153, 56, 47, .7);
 }
-
 .water {
     background-image: url(../images/water-mask.png);
 }
-
 .land {
     background-image: url(../images/land-mask.png);
 }
-
 .wind {
     background-image: url(../images/wind-mask.png);
 }
-
 .fill {
     width: 100%;
 }
-
 .artfont {
     font-size: 2em;
     font-family: fantasy;
     color: whitesmoke;
 }
-
 .copyright {
     background-color: rgba(0, 0, 0, .4);
 }
-
 .content {
     background-color: rgba(50, 30, 20, .5);
 }
-
 h1 {
     line-height: 150px;
     height: 150px;
 }
-
 h1>small {
     font-size: 0.5em;
+}
+.carousel-inner .item img {
+    margin: auto;
 }
