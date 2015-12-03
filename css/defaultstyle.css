@@ -93,4 +93,6 @@ h1>small {
 .description{
     background-color: rgba(30, 30, 30, 0.5);
 }
-
+.upside{
+    margin-top: 3em;
+}
