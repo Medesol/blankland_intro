@@ -60,8 +60,13 @@ h1 {
     line-height: 150px;
     height: 150px;
 }
-h1>small font-size: 0.5em;
-
+h1>small {
+    font-size: 0.5em;
+}
+<<<<<<< HEAD
+#myCarousel {
+    margin-top: 200px;
+    margin-bottom: 200px;
 }
 #zues .container .row {
     width: 100%;
@@ -85,4 +90,8 @@ h1>small font-size: 0.5em;
     margin-bottom: 10%;
     background-color: rgba(74, 127, 198, 0.74);
 }
-
+.description{
+    background-color: rgba(30, 30, 30, 0.5);
+}
+=======
+>>>>>>> refs/remotes/Medesol/master
