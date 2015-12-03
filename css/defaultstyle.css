@@ -63,10 +63,6 @@ h1 {
 h1>small font-size: 0.5em;
 
 }
-#myCarousel {
-    margin-top: 200px;
-    margin-bottom: 200px;
-}
 #zues .container .row {
     width: 100%;
 }
@@ -89,3 +85,4 @@ h1>small font-size: 0.5em;
     margin-bottom: 10%;
     background-color: rgba(74, 127, 198, 0.74);
 }
+
