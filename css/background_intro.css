@@ -1,0 +1,31 @@
+#allgods .container .row {}
+.item .asd {
+    padding: 0px;
+}
+.text {
+    margin-top: 10%;
+}
+.text h2 {
+    line-height: 100%;
+    height: 100%;
+}
+.item .row {
+    height: 100%;
+}
+.lunbo {
+    padding: 0px;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+.lunbo #zues {
+    background-color: rgba(74, 127, 198, 0.74);
+}
+.lunbo #allgods {
+    background-color: rgba(135, 154, 151, 0.74);
+}
+.lunbo #crown_stick {
+    background-color: rgba(0, 0, 0, 0.74);
+}
+.lunbo #war {
+    background-color: rgba(87, 30, 0, 0.74);
+}

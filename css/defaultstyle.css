@@ -60,9 +60,10 @@ h1 {
     line-height: 150px;
     height: 150px;
 }
-h1>small font-size: 0.5em;
-
+h1>small {
+    font-size: 0.5em;
 }
+<<<<<<< HEAD
 #myCarousel {
     margin-top: 200px;
     margin-bottom: 200px;
@@ -92,3 +93,5 @@ h1>small font-size: 0.5em;
 .description{
     background-color: rgba(30, 30, 30, 0.5);
 }
+=======
+>>>>>>> refs/remotes/Medesol/master
