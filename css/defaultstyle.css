@@ -60,4 +60,6 @@ h1 {
     line-height: 150px;
     height: 150px;
 }
-h1>small font-size: 0.5em;
+h1>small {
+    font-size: 0.5em;
+}
