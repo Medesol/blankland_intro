@@ -9,14 +9,18 @@
     <title>Rules_intro</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,800,800italic,700italic" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <link href="css/feedify.min.css" rel="stylesheet">
+    <link href="css/feedify-theme.min.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="css/rules_intro.css">
-	<style> #qi a{ text-decoration: none; color:#FFF}</style>
     <!--[if IE]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
@@ -27,8 +31,8 @@
                 </button>
 
             </div>
-            
-            
+
+
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-md-4 col-sm-3">
@@ -39,15 +43,15 @@
                             </ul>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="col-lg-6 col-md-4 col-sm-4">
                         <div class="collapse navbar-collapse text-center">
                             <p class="artfont">Blank's Land</p>
                         </div>
                     </div>
-                    
-                    
+
+
                     <div class="col-lg-3 col-md-4 col-sm-5">
                         <div class="collapse navbar-collapse">
                             <ul class="nav navbar-nav">
@@ -58,8 +62,8 @@
                         </div>
                     </div>
                 </div>
-                
-                
+
+
             </div>
 
 
@@ -68,167 +72,208 @@
 
         </div>
     </nav>
-    
-    
+
+
     <!--CONTENT-->
 
     <div class="container center-block">
         <div class="row">
-            <div class="col-lg-2 col-md-6 shadowbox1 content fixed ">
-                        <h2>玩法介绍</h2>
-                        <hr>
-                    <div class="shadowbox water" id="qi">
-                        <font size="+1"><a href="#1">属性选择</a></font>
-                    </div>
-                    <div class="shadowbox fire" id="qi">
-                        <font size="+1"><a href="#2">拾取与发散</a></font>
-                    </div>
-                    <div class="shadowbox land" id="qi">
-                        <font size="+1"><a href="#3">协调与失调</a></font>
-                    </div>
-                    <div class="shadowbox wind" id="qi">
-                        <font size="+1"><a href="#4">空地</a></font>
-                    </div>
-                    <div class="shadowbox example" id="qi">
-                        <font size="+1"><a href="#5">例</a></font>
-                    </div>
-            </div>
-    </div>
-    <div class="container">
-
-
-            <div class="col-lg-9 col-md-6 right" >
-                <div class="shadowbox part2" id="1">
-                    <hr>
-                    <br>首先玩家选择属性。
-                    <br>水，火，土，风。
-                    <br>
-                    <br>
-                    <img src="images/elements.png" width="90%" />
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+            <div class="col-lg-2 col-md-6 shadowbox1 content fixed cover">
+                <h2>玩法介绍</h2>
+                <hr>
+                <div class="shadowbox water qi">
+                    <font size="+1"><a href="#1">属性选择</a></font>
                 </div>
-                
-                
-                
-                <div class="shadowbox part1" id="2">
-                    <hr>
-                    <br>玩家有两种动作
-                    <br>拾取和发散。
-                    <br>拾取即翻开地图中的迷雾并得到相应物件。
-                    <br>发散即将自己属性的元素随机发散在迷雾中，该动作有损害。
-                    <br /><font size="+1">（注：发散过程中，如玩家将元素发散至与自己相同的元素上，则该元素周围的迷雾中会随机出现一个相同的元素；如发散至失调元素上则无任何反应；如发散至协调元素上，则该种元素会被发散至地图中任意两个迷雾中。）</font>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                <div class="shadowbox fire qi">
+                    <font size="+1"><a href="#2">拾取与发散</a></font>
                 </div>
-                
-                
-                <div class="shadowbox part3" id="3">
-                    <hr>
-                    <br>迷雾中有空地和不同的元素。
-                    <br>如果拾取到的元素与玩家的属性相同，则Blank长大；
-                    <br>如果拾取到的元素为协调元素，则Blank会无损害发散元素；
-                    <br>如果拾取到的元素为失调元素，则Blank会受到不同程度的伤害。
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                <div class="shadowbox land qi">
+                    <font size="+1"><a href="#3">协调与失调</a></font>
                 </div>
-                
-                
-                <div class="shadowbox part4" id="4">
-                    <hr>
-                    <br>空地会显示其周围迷雾中失调元素的数量。
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                <div class="shadowbox wind qi">
+                    <font size="+1"><a href="#4">空地</a></font>
                 </div>
-                
-                
-                <div class="shadowbox part5" id="5">
-                    <hr>
-                    <br>玩家选择的是火元素，那么火元素会使Blank长大；
-                    <br>风元素使Blank无损害发散火元素；
-                    <br>土元素和水元素分别会使Blank受到损伤和严重损伤。
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
+                <div class="shadowbox example qi">
+                    <font size="+1"><a href="#5">例</a></font>
                 </div>
             </div>
         </div>
+
+
+
+        <article class="htmleaf-container">
+
+            <div class="container" float="right">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="feedify">
+
+
+
+
+
+
+
+
+                            <section class="feedify-item">
+                                <header class="feedify-item-header clearfix">
+                                    <hr>
+                                    <h1 class="pull-left" id="1"><font color="#0000FF">1 属性选择</font></h1>
+
+                                </header>
+                                <div class="feedify-item-body">
+                                    <img alt="" src="images/elements new.jpg" class="img-responsive">
+                                </div>
+                                <footer>
+
+                                    <div class="legend">
+                                        <p><font color="#0033CC" size="+1">首先玩家选择属性:</font></p>
+                                        <p><font color="#0033CC" size="+1">水，火，土，风。</font></p>
+                                    </div>
+                                </footer>
+                            </section>
+
+                            <section class="feedify-item">
+                                <header class="feedify-item-header clearfix">
+                                    <hr>
+                                    <h1 class="pull-left" id="2"><font color="#0000FF">2 拾取与发散</font></h1>
+
+                                </header>
+                                <div class="feedify-item-body">
+                                    <img alt="" src="images/pick and send.jpg" class="img-responsive">
+                                </div>
+                                <footer>
+                                    <div class="actions">
+                                        <ul class="list-inline">
+
+
+                                        </ul>
+                                    </div>
+                                    <div class="legend">
+                                        <p><font color="#0033CC" size="+1">玩家有两种动作 </font></p>
+                                        <p><font color="#0033CC" size="+1">拾取和发散。  </font></p>
+                                        <p><font color="#0033CC" size="+1">拾取即翻开地图中的迷雾并得到相应物件。 </font></p>
+                                        <p><font color="#0033CC" size="+1">发散即将自己属性的元素随机发散在迷雾中，该动作有损害。  </font></p>
+                                        <p><font color="#0033CC">（注：发散过程中，如玩家将元素发散至与自己相同的元素上，则该元素周围的迷雾中会随机出现一个相同的元素；如发散至失调元素上则无任何反应；如发散至协调元素上，则该种元素会被发散至地图中任意两个迷雾中。）</font></p>
+                                    </div>
+
+                                </footer>
+                            </section>
+
+                            <section class="feedify-item">
+                                <header class="feedify-item-header clearfix">
+                                    <hr>
+                                    <h1 class="pull-left" id="3"><font color="#0000FF">3 协调与失调</font></h1>
+
+                                </header>
+                                <div class="feedify-item-body">
+                                    <img alt="" src="images/relationship.jpg" class="img-responsive">
+                                </div>
+                                <footer>
+                                    <div class="actions">
+                                        <ul class="list-inline">
+
+
+                                        </ul>
+                                    </div>
+                                    <div class="legend">
+                                        <p><font color="#0033CC" size="+1">迷雾中有空地和不同的元素。 </font></p>
+                                        <p><font color="#0033CC" size="+1">如果拾取到的元素与玩家的属性相同，则Blank长大；   </font></p>
+                                        <p><font color="#0033CC" size="+1">如果拾取到的元素为协调元素，则Blank会无损害发散元素；</font></p>
+                                        <p><font color="#0033CC" size="+1">如果拾取到的元素为失调元素，则Blank会受到不同程度的伤害。  </font></p>
+                                    </div>
+
+                                </footer>
+                            </section>
+
+
+                            <section class="feedify-item">
+                                <header class="feedify-item-header clearfix">
+                                    <hr>
+                                    <h1 class="pull-left" id="4"><font color="#0000FF">4 空地</font></h1>
+
+                                </header>
+                                <div class="feedify-item-body">
+                                    <img alt="" src="images/blank.jpg" class="img-responsive">
+                                </div>
+                                <footer>
+                                    <div class="actions">
+                                        <ul class="list-inline">
+
+
+                                        </ul>
+                                    </div>
+                                    <div class="legend">
+                                        <p><font color="#0033CC" size="+1">空地会显示其周围迷雾中失调元素的数量。  </font></p>
+                                    </div>
+
+                                </footer>
+                            </section>
+
+
+                            <section class="feedify-item">
+                                <header class="feedify-item-header clearfix">
+                                    <hr>
+                                    <h1 class="pull-left" id="5"><font color="#0000FF">5 例</font></h1>
+
+                                </header>
+                                <div class="feedify-item-body">
+                                    <img alt="" src="images/example.jpg" class="img-responsive">
+                                </div>
+                                <footer>
+                                    <div class="actions">
+                                        <ul class="list-inline">
+
+
+                                        </ul>
+                                    </div>
+                                    <div class="legend">
+                                        <p><font color="#0033CC" size="+1">玩家选择的是火元素，那么火元素会使Blank长大；</font></p>
+                                        <p><font color="#0033CC" size="+1">风元素使Blank无损害发散火元素；   </font></p>
+                                        <p><font color="#0033CC" size="+1">土元素和水元素分别会使Blank受到损伤和严重损伤。  </font></p>
+                                    </div>
+
+                                </footer>
+                            </section>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
     </div>
 
-
-
-
-
-    <!--CONTENT-->
-    
-    <div class="container">
-        <div class="row shadowbox copyright">
-            <div class="col-lg-offset-1 col-lg-3 col-md-4">
-                <img class="logo" src="images/logo_team.png">
-            </div>
-            <div class="col-lg-7 col-md-8 text-justify">
-                <p><span>Team简介┊About Team┊广告服务┊联系我们┊招聘信息┊网站律师┊通行证注册┊产品答疑</span></p>
-                <p>Copyright © 1997-2015 Team609, All Rights Reserved</p>
-                <p>Team609 版权所有</p>
+                <div class="container">
+            <div class="row shadowbox copyright">
+                <div class="col-lg-offset-1 col-lg-3 col-md-4">
+                    <img class="logo img-responsive covered" src="images/logo_team.png">
+                </div>
+                <div class="col-lg-7 col-md-8 text-justify">
+                    <p><span>Team简介┊About Team┊广告服务┊联系我们┊招聘信息┊网站律师┊通行证注册┊产品答疑</span></p>
+                    <p>Copyright © 1997-2015 Team609, All Rights Reserved</p>
+                    <p>Team609 版权所有</p>
+                </div>
             </div>
         </div>
-    </div>
+
+        <!--CONTENT-->
 
 
-    <script src="js/bootstrap.min.js"></script>
+
+
+        <script src="js/bootstrap.min.js"></script>
+        <script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+        <script>
+            window.jQuery || document.write('<script src="js/jquery-2.1.1.min.js"><\/script>')
+        </script>
+        <script src="js/feedify.min.js"></script>
+        <script>
+            $(function () {
+                $('.feedify').feedify();
+            });
+        </script>
 </body>
+
 </html>
