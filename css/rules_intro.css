@@ -28,7 +28,7 @@ body {
     color: #99382f;
 }
 
-.shadowbox{
+.shadowbox {
     padding: 19px;
     margin-bottom: 20px;
     -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .2), 0 6px 20px 0 rgba(0, 0, 0, .19);
@@ -36,7 +36,8 @@ body {
     border-radius: 3px;
     border: 0px;
 }
-.shadowbox1{
+
+.shadowbox1 {
     padding: 19px;
     margin-bottom: 20px;
     -webkit-box-shadow: 0 8px 17px 0 rgba(0, 0, 0, .8), 0 6px 20px 0 rgba(0, 0, 0, .49);
@@ -44,6 +45,7 @@ body {
     border-radius: 3px;
     border: 0px;
 }
+
 .fire {
     background-image: url(../images/water-mask.png);
 }
@@ -59,46 +61,59 @@ body {
 .wind {
     background-image: url(../images/land-mask.png);
 }
-.example{
-	background-color: rgba(36,182,49,.7);
+
+.example {
+    background-color: rgba(36, 182, 49, .7);
 }
-.part1{
-	background-image: url(../images/water-mask.png);
-	font-family:"glyphicons halflings regular";
-    font-size: 20px;
-	}
-.part2{
-	background-image: url(../images/wind-mask.png);
-	font-family:"glyphicons halflings regular";
+
+.part1 {
+    background-image: url(../images/water-mask.png);
+    font-family: "glyphicons halflings regular";
     font-size: 20px;
 }
-.part3{
-	background-color: rgba(153, 56, 47, .7);
-	font-family:"glyphicons halflings regular";
+
+.part2 {
+    background-image: url(../images/wind-mask.png);
+    font-family: "glyphicons halflings regular";
     font-size: 20px;
 }
-.part4{
-	background-image: url(../images/land-mask.png);
-	font-family:"glyphicons halflings regular";
+
+.part3 {
+    background-color: rgba(153, 56, 47, .7);
+    font-family: "glyphicons halflings regular";
     font-size: 20px;
 }
-.part5{
-	background-color: rgba(36,182,49,.7);
-	font-family:"glyphicons halflings regular";	
+
+.part4 {
+    background-image: url(../images/land-mask.png);
+    font-family: "glyphicons halflings regular";
     font-size: 20px;
-	}
+}
+
+.part5 {
+    background-color: rgba(36, 182, 49, .7);
+    font-family: "glyphicons halflings regular";
+    font-size: 20px;
+}
+
 .fill {
     width: 100%;
 }
-.fixed{
-	position:fixed;}
-.right{
-	float:right;}
+
+.fixed {
+    position: fixed;
+}
+
+.right {
+    float: right;
+}
+
 .artfont {
     font-size: 2em;
     font-family: fantasy;
     color: whitesmoke;
 }
+
 .copyright {
     background-color: rgba(0, 0, 0, .4);
 }
@@ -114,4 +129,13 @@ h1 {
 
 h1>small {
     font-size: 0.5em;
+}
+
+.qi a {
+    text-decoration: none;
+    color: #FFF;
+}
+
+.cover {
+    z-index: 99;
 }
