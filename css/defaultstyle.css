@@ -64,6 +64,7 @@ h1>small {
     font-size: 0.5em;
 }
 
+<<<<<<< HEAD
 #myCarousel {
     margin-top: 200px;
     margin-bottom: 200px;
@@ -94,3 +95,9 @@ h1>small {
     background-color: rgba(30, 30, 30, 0.5);
 }
 
+=======
+.cool{
+    background-color: rgba(20,20,20,.7) !important;
+    padding: 0px;
+}
+>>>>>>> refs/remotes/Medesol/master
