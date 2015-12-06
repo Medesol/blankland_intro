@@ -16,43 +16,42 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-<script type="text/javascript">
-    
-$(document).ready(function(){
-    var ishovering = false;
-    $("#11").mouseenter(
-        function(){
-           $("#22").fadeIn();
-        }
-    );
-    $("#11").mouseleave(
-        function(){
-            if(!ishovering){
-                setTimeout( function() { 
-                    if(!ishovering){
-                        $("#22").fadeOut();
-                    }
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var ishovering = false;
+            $("#11").mouseenter(
+                function() {
+                    $("#22").fadeIn();
                 }
-                ,500);
-            }
-            
-        }
-    );
-    $("#22").mouseenter(
-        function(){
-            ishovering = true;
-        }
-    );
-    $("#22").mouseleave(
-        function(){
-            ishovering = false;
-            setTimeout(function() {
-                $("#22").fadeOut();
-            },500);
-        }
-    );
-});
-</script>
+            );
+            $("#11").mouseleave(
+                function() {
+                    if (!ishovering) {
+                        setTimeout(function() {
+                            if (!ishovering) {
+                                $("#22").fadeOut();
+                            }
+                        }, 500);
+                    }
+
+                }
+            );
+            $("#22").mouseenter(
+                function() {
+                    ishovering = true;
+                }
+            );
+            $("#22").mouseleave(
+                function() {
+                    ishovering = false;
+                    setTimeout(function() {
+                        $("#22").fadeOut();
+                    }, 500);
+                }
+            );
+        });
+
+    </script>
 </head>
 
 <body>
@@ -75,10 +74,18 @@ $(document).ready(function(){
                                     <a href="#" id="11">人物介绍</a>
                                     <div id="22" style="text-align: center;display: none;">
                                         <br>
-                                        <a href="#" id="33">火元素</a><br><br>
-                                        <a href="#" id="33">水元素</a><br><br>
-                                        <a href="#" id="33">土元素</a><br><br>
-                                        <a href="#" id="33">风元素</a><br><br>
+                                        <a href="#">火元素</a>
+                                        <br>
+                                        <br>
+                                        <a href="#">水元素</a>
+                                        <br>
+                                        <br>
+                                        <a href="#">土元素</a>
+                                        <br>
+                                        <br>
+                                        <a href="#">风元素</a>
+                                        <br>
+                                        <br>
                                     </div>
                                 </li>
                             </ul>
@@ -132,15 +139,15 @@ $(document).ready(function(){
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 shadowbox content">
-                    <h2>人物介绍</h2>
-                    <hr>
+                <h2>人物介绍</h2>
+                <hr>
                 <div class="shadowbox fire">
                     <hr>
                     <h4>火元素：荣誉与地位</h4>
                     <p>围绕着生命当中的荣誉与自尊，为了追求成功而燃烧自己的生命，努力释放自己的生命价值。</p>
                     <a class="pull-right label" href="#">&gt;&gt;查看更多</a>
                     <hr>
-                    
+
                 </div>
                 <div class="shadowbox water">
                     <hr>
