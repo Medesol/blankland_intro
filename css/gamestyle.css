@@ -1,0 +1,17 @@
+.game-container {
+    padding: 0px;
+}
+
+.cell{
+    width: 1.6em;
+    height: 1.6em;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    line-height: 1.6em;
+    font-size: 1.2em;    
+}
+
+.fog{
+    
+}
