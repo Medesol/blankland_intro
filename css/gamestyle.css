@@ -36,7 +36,38 @@
 
 .number{
     line-height: 1.5em;
-    background-color: rgb(153, 56, 47);
+    text-shadow: 1px 3px 2px #000000;
+}
+
+.number-fire {
+    background-color: rgba(153, 56, 47, .7);
+}
+.number-water {
+    background-image: url(../images/water-mask.png);
+}
+.number-land {
+    background-image: url(../images/land-mask.png);
+}
+.number-wind {
+    background-image: url(../images/wind-mask.png);
+}
+
+.element{
+    position: absolute;
+    z-index: 999;
+    left: 116px;
+    top: 117px;
+    width: 2.6em;
+    height: 2.6em;
+    background-size: cover;
+}
+
+.cell-fire{
+    background-image: url("../images/fire/fire_cell.png");
+}
+
+.cell-water{
+    background-image: url("../images/water/water_cell.png");
 }
 
 .disappear{
