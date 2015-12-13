@@ -4,13 +4,15 @@ function Fog(jquerydom) {
         return !this.jquerydom.hasClass("disappear");
     };
     this.disappear = function () {
-        this.jquerydom.css("position","absolute");
-        this.jquerydom.css("left","0px");
-        this.jquerydom.css("top","0px");
-        this.jquerydom.fadeOut(500);
+        //this.jquerydom.
+        var x = this.jquerydom.offset();
+        this.jquerydom.css("position", "absolute");
+        this.jquerydom.css("left", x.left + "px");
+        this.jquerydom.css("top", x.top + "px");
+        this.jquerydom.fadeOut(200);
     };
     this.showSelf = function () {
-        this.jquerydom.css("position","static");
+        this.jquerydom.css("position", "static");
         this.show();
     };
     this.whenOpen = function (eventFunc) {
@@ -57,19 +59,39 @@ function NumberSign(number, jquerydom) {
         this.currentTheme = theme;
         this.jquerydom.addClass(theme);
     };
-    
+
 }
 
-function Cell(jquerydom) {
+function Element(elementType,position) {
+    var eledom = $("<div class='element'></div>");
+    eledom.addClass("cell-" + elementType);
+    eledom.appendTo("#out");
+    eledom.offset(position);
+    eledom.show();
+    eledom.fadeIn(500,function () {
+        eledom.delay(500).fadeOut(500);
+    });
+    eledom.remove();
+}
+
+function Cell(jquerydom, elementType, number) {
     this.jquerydom = jquerydom;
     jquerydom.html("<div class='cell number'></div><button class='cell fog' type='button'></button>");
     var fogDom = jquerydom.children(".fog");
     var fog = new Fog(fogDom);
     var numberDom = jquerydom.children(".number");
-    var number = new NumberSign(3,numberDom);
+    var number = new NumberSign(0, numberDom);
+    this.getLeft = function () {
+        return jquerydom.offset().left;
+    }
+    this.getTop = function () {
+        return jquerydom.offset().top;
+    }
     number.disappear();
     fog.whenOpen(function () {
         fog.disappear();
+        var ele = new Element(elementType,jquerydom.offset());
         number.showSelf();
     });
+
 }
