@@ -62,16 +62,17 @@ function NumberSign(number, jquerydom) {
 
 }
 
-function Element(elementType,position) {
+function Element(elementType,position,towards) {
     var eledom = $("<div class='element'></div>");
     eledom.addClass("cell-" + elementType);
-    eledom.appendTo("#out");
     eledom.offset(position);
-    eledom.show();
-    eledom.fadeIn(500,function () {
-        eledom.delay(500).fadeOut(500);
-    });
-    eledom.remove();
+    eledom.hide();
+    eledom.appendTo("body");
+    eledom.fadeIn(1000,function () {
+        eledom.delay(500).fadeOut(1000,function () {
+            eledom.remove();
+        });
+    });   
 }
 
 function Cell(jquerydom, elementType, number) {
