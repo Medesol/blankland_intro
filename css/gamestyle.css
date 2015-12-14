@@ -3,14 +3,9 @@
   src: url("../fonts/HelveticaRounded-Bold.otf"); 
 }
 
-
-.game-container {
-    padding: 0px;
-    border-collapse: collapse;
-    
-}
 .game-container td{
-    padding: 1px;
+    width: 2.7em;
+    height: 2.7em;
 }
 
 .cell{
@@ -43,20 +38,18 @@
     background-color: rgba(153, 56, 47, .7);
 }
 .number-water {
-    background-image: url(../images/water-mask.png);
-}
-.number-land {
-    background-image: url(../images/land-mask.png);
+    background-color: rgba(22, 114, 160, 0.7);
 }
 .number-wind {
-    background-image: url(../images/wind-mask.png);
+    background-color: rgba(86, 95, 86, 0.8);
+}
+.number-land {
+    background-color: rgba(128, 86, 25, 0.7);
 }
 
 .element{
     position: absolute;
     z-index: 999;
-    left: 116px;
-    top: 117px;
     width: 2.6em;
     height: 2.6em;
     background-size: cover;
@@ -68,6 +61,14 @@
 
 .cell-water{
     background-image: url("../images/water/water_cell.png");
+}
+
+.cell-wind{
+    background-image: url("../images/wind/wind_cell.png");
+}
+
+.cell-land{
+    background-image: url("../images/land/land_cell.png");
 }
 
 .disappear{

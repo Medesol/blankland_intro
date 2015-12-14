@@ -10,240 +10,43 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/gamestyle.css">
     <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/cells.js"></script>
+    <script src="js/game_container.js"></script>
     <script>
         $(function () {
             var number = new NumberSign(3, $("#testNum"));
             number.changeTheme("number-fire");
             setTimeout(function () {
                 //number.addNumber(1);
-               // number.disappear();
+                // number.disappear();
                 number.changeTheme("number-water");
                 number.addNumber(1);
                 number.showSelf();
-               
+
             }, 1000);
             setTimeout(function () {
                 number.changeTheme("number-fire");
-            },2000);
-            var cell = new Cell($("#testCell"),"fire",3);
-            $("#out").html(cell.getLeft());
+            }, 2000);
+            for (var i = 0; i < 6; i++) {
+                var cell = new Cell($("#test" + (i + 1)));
+                cell.changeTheme("fire");
+            }
         });
     </script>
 </head>
 
 <body>
-   <p id="out"></p>
+    <p id="out"></p>
     <div class="cell number"></div>
     <table class="game-container">
         <tr>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                
-            </td>
-            <td>
-                <div class="cell number" id="testNum"></div>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
+            <td id="test1"></td>
+            <td id="test2"></td>
+            <td id="test3"></td>
         </tr>
         <tr>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <div class="cell number disappear">2</div>
-                <button class="cell fog" id="test" type="button" onclick="$('#test').addClass('disappear'); $('.number').removeClass('disappear');"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td id="testCell">
-                
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
-            <td>
-                <button class="cell fog" type="button"></button>
-            </td>
+            <td id="test4"></td>
+            <td id="test5"></td>
+            <td id="test6"></td>
         </tr>
     </table>
 </body>

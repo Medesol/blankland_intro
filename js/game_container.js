@@ -117,3 +117,4 @@ function Cell(jquerydom) {
         number.addNumber(num);
     };
 }
+
