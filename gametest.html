@@ -2,53 +2,72 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Blank's Land test</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta charset="UTF-8">
+	<title>Blank's Land test</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/gamestyle.css">
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/game_container.js"></script>
-    <script>
-        $(function () {
-            var number = new NumberSign(3, $("#testNum"));
-            number.changeTheme("number-fire");
-            setTimeout(function () {
-                //number.addNumber(1);
-                // number.disappear();
-                number.changeTheme("number-water");
-                number.addNumber(1);
-                number.showSelf();
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/gamestyle.css">
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/game_container.js"></script>
+	<script>
+		$(function () {
+			var number = new NumberSign(3, $("#testNum"));
+			number.changeTheme("number-fire");
+			setTimeout(function () {
+				//number.addNumber(1);
+				// number.disappear();
+				number.changeTheme("number-water");
+				number.addNumber(1);
+				number.showSelf();
 
-            }, 1000);
-            setTimeout(function () {
-                number.changeTheme("number-fire");
-            }, 2000);
-            for (var i = 0; i < 6; i++) {
-                var cell = new Cell($("#test" + (i + 1)));
-                cell.changeTheme("fire");
-            }
-        });
-    </script>
+			}, 1000);
+			setTimeout(function () {
+				number.changeTheme("number-fire");
+			}, 2000);
+			for (var i = 0; i < 6; i++) {
+				var cell = new Cell($("#test" + (i + 1)));
+				cell.changeTheme("fire");
+			}
+
+			var map = new Map($(".game-container"), 6, 8);
+			map.get(2, 3).setNumber(6);
+			map.get(1, 2).setClickEvent(function (position) {
+				var element = new Element("fire", position, $("#test4").offset());
+			});
+			var element = new Element("wind", $("#test1").offset(), $("#test4").offset());
+			var theme = ["fire", "water", "wind", "land"];
+			var themecounter = 0;
+
+			function nextTheme() {
+				var themedata = theme[themecounter];
+				themecounter++;
+				themecounter %= 4;
+				return themedata;
+			}
+			setInterval(function () {
+				map.changeTheme(nextTheme());
+			}, 2000);
+		});
+	</script>
 </head>
 
 <body>
-    <p id="out"></p>
-    <div class="cell number"></div>
-    <table class="game-container">
-        <tr>
-            <td id="test1"></td>
-            <td id="test2"></td>
-            <td id="test3"></td>
-        </tr>
-        <tr>
-            <td id="test4"></td>
-            <td id="test5"></td>
-            <td id="test6"></td>
-        </tr>
-    </table>
+	<p id="out"></p>
+	<div class="game-container"></div>
+	<table>
+		<tr>
+			<td id="test1"></td>
+			<td id="test2"></td>
+			<td id="test3"></td>
+		</tr>
+		<tr>
+			<td id="test4"></td>
+			<td id="test5"></td>
+			<td id="test6"></td>
+		</tr>
+	</table>
 </body>
 
 </html>
