@@ -2,10 +2,20 @@
   font-family: Cute; 
   src: url("../fonts/HelveticaRounded-Bold.otf"); 
 }
+.game-container {
+	width: 40%;
+}
 
 .game-container td{
     width: 2.7em;
     height: 2.7em;
+}
+
+.cutetext {
+	font-family: Cute;
+	font-size: 1.6em;
+	color: whitesmoke;
+	text-shadow: 1px 3px 2px #000000;
 }
 
 .cell{
@@ -19,12 +29,18 @@
     border-radius: 5px;
 }
 
+
 .fog{
     background-image: url("../images/mist.png");
     background-size: cover;
 }
 
 .fog:hover{
+    background-image: url("../images/mist_dark.png");
+    background-size: cover;
+}
+
+.fog-static{
     background-image: url("../images/mist_dark.png");
     background-size: cover;
 }

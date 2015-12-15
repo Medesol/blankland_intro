@@ -25,7 +25,7 @@ function NumberSign(number, jquerydom) {
 	'use strict';
 	this.number = number;
 	this.jquerydom = jquerydom;
-	this.jquerydom.html("<div></div>");
+	this.jquerydom.html("<span></span>");
 	this.currentTheme = "";
 	var contentdom = this.jquerydom.children();
 	contentdom.text(number.toString());
@@ -73,7 +73,7 @@ function Element(elementType, position, towards, callback) {
 	eledom.appendTo("body");
 	//var cssto = {left:towards+"px"};
 	eledom.fadeIn(300, function () {
-		eledom.delay(200).animate(towards, 1000).fadeOut(1000, function () {
+		eledom.animate(towards, 1000).fadeOut(300, function () {
 			eledom.remove();
 			if (callback !== undefined) {
 				callback();
@@ -118,12 +118,15 @@ function Cell(jquerydom) {
 	};
 	this.row = 0;
 	this.column = 0;
+	this.fog = fog;
+	this.number = number;
 }
 
 function Map(jquerydom, width, height) {
 	'use strict';
+	this.jquerydom = jquerydom;
 	var tabledom = $("<table></table>");
-	var click = function (absolute,cell) {};
+	var click = function (absolute, cell) {};
 	var p_click = function (absolute) {
 		//click();
 	};
@@ -143,6 +146,7 @@ function Map(jquerydom, width, height) {
 		}
 		trdom.appendTo(tabledom);
 	}
+
 	tabledom.appendTo(jquerydom);
 	/*this.setOnClick = function (eventFunc) {
 		click = eventFunc;
@@ -150,15 +154,154 @@ function Map(jquerydom, width, height) {
 	this.get = function (row, column) {
 		return cellArray[row][column];
 	};
-	this.changeTheme = function (theme) {
-		for (var xa = 0; xa < cellArray.length; xa++) {
-			for (var ya = 0; ya < cellArray[xa].length; ya++) {
-				cellArray[xa][ya].changeTheme(theme);
+	//jquerydom.width(this.get(0, 0).jquerydom.width() * (width * 1.2));
+	this.foreachCell = function (func) {
+		var xa, ya;
+		for (xa = 0; xa < cellArray.length; xa++) {
+			for (ya = 0; ya < cellArray[xa].length; ya++) {
+				func(cellArray[xa][ya]);
 			}
 		}
 	};
+	this.changeTheme = function (theme) {
+		this.foreachCell(function (item) {
+			item.changeTheme(theme);
+		});
+	};
+
 }
 
-function GameContainer() {
-	var mapdom = $(".game-container");
+function Player(jquerydom, elementType) {
+	'use strict';
+	this.type = elementType;
+	this.jquerydom = jquerydom;
+	this.grow = function () {
+		jquerydom.animate({
+			opacity: 0.5
+		}, 100).animate({
+			opacity: 1
+		}, 100);
+	};
+	this.hurt = function () {
+		var curroffset = jquerydom.offset();
+		var currcss = jquerydom.css("position");
+		jquerydom.css({
+			position: "absolute"
+		});
+		jquerydom.offset(curroffset);
+		jquerydom.animate({
+			left: "-=5px"
+		}, 10);
+		var i;
+		for (i = 0; i < 5; i++) {
+			jquerydom.animate({
+				left: "+=10px"
+			}, 10);
+			jquerydom.animate({
+				left: "-=10px"
+			}, 10);
+		}
+		jquerydom.animate({
+			left: "+=5px"
+		}, 10, function () {
+			jquerydom.css({
+				position: currcss
+			});
+		});
+	};
+	this.severeHurt = function () {
+		var curroffset = jquerydom.offset();
+		var currcss = jquerydom.css("position");
+		jquerydom.css({
+			position: "absolute"
+		});
+		jquerydom.offset(curroffset);
+		jquerydom.animate({
+			left: "-=20px"
+		}, 10);
+		var i;
+		for (i = 0; i < 5; i++) {
+			jquerydom.animate({
+				left: "+=40px"
+			}, 10);
+			jquerydom.animate({
+				left: "-=40px"
+			}, 10);
+		}
+		jquerydom.animate({
+			left: "+=20px"
+		}, 10, function () {
+			jquerydom.css({
+				position: currcss
+			});
+		});
+	};
+}
+
+
+
+
+function GameContainer(map) {
+	'use strict';
+	this.map = map;
+	this.enablePlay = function () {
+		map.foreachCell(function (cell) {
+			cell.fog.jquerydom.removeAttr("disabled");
+			/*cell.fog.jquerydom.unbind("mousedown");
+			cell.fog.jquerydom.removeClass("fog-static");*/
+		});
+	};
+	this.disablePlay = function () {
+		map.foreachCell(function (cell) {
+			cell.fog.jquerydom.attr({disabled: "true"});
+			/*cell.fog.jquerydom.mousedown(function () {
+				cell.fog.jquerydom.toggleClass("fog-static");
+			});*/
+		});
+	};
+	var getFitOffset = function (player) {
+		var offset = player.jquerydom.offset();
+		offset.left += player.jquerydom.width() / 2;
+		offset.top += player.jquerydom.height() / 2;
+		return offset;
+	}
+	this.animatePlayerGrow = function (player, element, cellPos, callback) {
+		var ele = new Element(element, cellPos, getFitOffset(player), function () {
+			player.grow();
+			if (callback != undefined) {
+				callback();
+			}
+		});
+	};
+	this.animatePlayerHurt = function (player, element, cellPos, callback) {
+		var ele = new Element(element, cellPos, getFitOffset(player), function () {
+			player.hurt();
+			if (callback != undefined) {
+				callback();
+			}
+		});
+	};
+	this.animatePlayerSevereHurt = function (player, element, cellPos, callback) {
+		var ele = new Element(element, cellPos, getFitOffset(player), function () {
+			player.severeHurt();
+			if (callback != undefined) {
+				callback();
+			}
+		});
+	};
+	var getRandomMapOffset = function () {
+		var offset = map.jquerydom.offset();
+		var lft = Math.random() * map.jquerydom.width() * 0.7;
+		offset.left += lft;
+		var top = Math.random() * map.jquerydom.height() * 0.7;
+		offset.top += top;
+		return offset;
+	};
+	this.animatePlayerDistribute = function (player, element, cellPos, callback) {
+		var ele = new Element(element, cellPos, getFitOffset(player), function () {
+			var ele0 = new Element(player.type, getFitOffset(player), getRandomMapOffset());
+			var ele1 = new Element(player.type, getFitOffset(player), getRandomMapOffset());
+			var ele2 = new Element(player.type, getFitOffset(player), getRandomMapOffset(), callback);
+		});
+	};
 }
