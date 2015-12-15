@@ -41,6 +41,11 @@
 }
 
 .fog-static{
+    background-image: url("../images/mist.png");
+    background-size: cover;
+}
+
+.fog-static-hover{
     background-image: url("../images/mist_dark.png");
     background-size: cover;
 }

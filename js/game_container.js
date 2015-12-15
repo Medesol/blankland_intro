@@ -17,6 +17,7 @@ function Fog(jquerydom) {
 		this.show();
 	};
 	this.whenOpen = function (eventFunc) {
+		this.jquerydom.unbind("click");
 		this.jquerydom.click(eventFunc);
 	};
 }
@@ -96,11 +97,12 @@ function Cell(jquerydom) {
 	var whenClick = function (cellPosition) {
 		var ele = new Element("water", cellPosition, jquerydom.offset());
 	};
-	fog.whenOpen(function () {
+	var open = function () {
 		fog.disappear();
 		whenClick(jquerydom.offset());
 		number.showSelf();
-	});
+	};
+	fog.whenOpen(open);
 	this.setClickEvent = function (eventFunc) {
 		whenClick = eventFunc;
 	};
@@ -115,6 +117,18 @@ function Cell(jquerydom) {
 	};
 	this.addNumber = function (num) {
 		number.addNumber(num);
+	};
+	this.disable = function () {
+		fog.jquerydom.removeClass("fog");
+		fog.jquerydom.addClass("fog-static");
+		fog.whenOpen(function () {
+			fog.jquerydom.toggleClass("fog-static-hover");
+		}); 
+	};
+	this.enable = function (){
+		fog.jquerydom.removeClass("fog-static");
+		fog.jquerydom.addClass("fog");
+		fog.whenOpen(open);
 	};
 	this.row = 0;
 	this.column = 0;
@@ -246,14 +260,19 @@ function GameContainer(map) {
 	this.map = map;
 	this.enablePlay = function () {
 		map.foreachCell(function (cell) {
-			cell.fog.jquerydom.removeAttr("disabled");
+			cell.enable();
+			//cell.fog.jquerydom.removeAttr("disabled");
 			/*cell.fog.jquerydom.unbind("mousedown");
 			cell.fog.jquerydom.removeClass("fog-static");*/
+			//cell.fog.
 		});
 	};
 	this.disablePlay = function () {
 		map.foreachCell(function (cell) {
-			cell.fog.jquerydom.attr({disabled: "true"});
+			cell.disable();
+			/*cell.fog.jquerydom.attr({
+				disabled: "true"
+			});*/
 			/*cell.fog.jquerydom.mousedown(function () {
 				cell.fog.jquerydom.toggleClass("fog-static");
 			});*/
