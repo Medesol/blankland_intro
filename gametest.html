@@ -36,20 +36,20 @@
 			var con = new GameContainer(map);
 			var num = new NumberSign(100, $("#testnum2"));
 			map.get(1, 2).setClickEvent(function (position) {
-				con.animatePlayerGrow(player, "fire", position,function() {
+				con.animatePlayerGrow(player, "fire", position, function () {
 					num.addNumber(1);
 				});
 			});
 			map.get(1, 3).setClickEvent(function (position) {
-				con.animatePlayerHurt(player, "land", position,function() {
+				con.animatePlayerHurt(player, "land", position, function () {
 					num.addNumber(-2);
 				});
 			});
 			map.get(1, 4).setClickEvent(function (position) {
-				con.animatePlayerSevereHurt(player, "water", position, function() {
+				con.animatePlayerSevereHurt(player, "water", position, function () {
 					num.addNumber(-4);
 				});
-				
+
 			});
 			map.get(1, 5).setClickEvent(function (position) {
 				con.animatePlayerDistribute(player, "wind", position);
@@ -72,7 +72,7 @@
 				map.changeTheme(nextTheme());
 				//map.get(2,2).addNumber(1);
 			}, 2000);
-			
+
 
 			$("#grow").click(function () {
 				player.grow();
@@ -92,6 +92,9 @@
 			$("#display").click(function () {
 				con.disablePlay();
 			});
+			$("#distribute").click(function () {
+				con.animateDistribute(player);
+			});
 		});
 	</script>
 </head>
@@ -109,7 +112,7 @@
 		<button id="severe">severe hurt</button>
 		<button id="play">play</button>
 		<button id="display">stop</button>
-		
+		<button id="distribute">distribute</button>
 	</p>
 
 	<table>

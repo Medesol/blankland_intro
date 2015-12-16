@@ -123,9 +123,9 @@ function Cell(jquerydom) {
 		fog.jquerydom.addClass("fog-static");
 		fog.whenOpen(function () {
 			fog.jquerydom.toggleClass("fog-static-hover");
-		}); 
+		});
 	};
-	this.enable = function (){
+	this.enable = function () {
 		fog.jquerydom.removeClass("fog-static");
 		fog.jquerydom.addClass("fog");
 		fog.whenOpen(open);
@@ -278,12 +278,14 @@ function GameContainer(map) {
 			});*/
 		});
 	};
-	var getFitOffset = function (player) {
+
+	this.getCenterOffset = function (player) {
 		var offset = player.jquerydom.offset();
 		offset.left += player.jquerydom.width() / 2;
 		offset.top += player.jquerydom.height() / 2;
 		return offset;
-	}
+	};
+	var getFitOffset = this.getCenterOffset;
 	this.animatePlayerGrow = function (player, element, cellPos, callback) {
 		var ele = new Element(element, cellPos, getFitOffset(player), function () {
 			player.grow();
@@ -316,11 +318,15 @@ function GameContainer(map) {
 		offset.top += top;
 		return offset;
 	};
+	this.animateDistribute = function (player, callback) {
+		var ele0 = new Element(player.type, getFitOffset(player), getRandomMapOffset());
+		var ele1 = new Element(player.type, getFitOffset(player), getRandomMapOffset());
+		var ele2 = new Element(player.type, getFitOffset(player), getRandomMapOffset(), callback);
+	};
+	var dis = this.animateDistribute;
 	this.animatePlayerDistribute = function (player, element, cellPos, callback) {
-		var ele = new Element(element, cellPos, getFitOffset(player), function () {
-			var ele0 = new Element(player.type, getFitOffset(player), getRandomMapOffset());
-			var ele1 = new Element(player.type, getFitOffset(player), getRandomMapOffset());
-			var ele2 = new Element(player.type, getFitOffset(player), getRandomMapOffset(), callback);
+		var ele = new Element(element, cellPos, getFitOffset(player), function (){
+			dis(player,callback);
 		});
 	};
 }
