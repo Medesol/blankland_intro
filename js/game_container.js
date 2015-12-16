@@ -6,7 +6,7 @@ function Fog(jquerydom) {
 	};
 	this.disappear = function () {
 		//this.jquerydom.
-		var x = this.jquerydom.offset();
+		var x = this.jquerydom.position();
 		this.jquerydom.css("position", "absolute");
 		this.jquerydom.css("left", x.left + "px");
 		this.jquerydom.css("top", x.top + "px");
