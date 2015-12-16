@@ -60,14 +60,25 @@
     </script>
     <script>
         $(function() {
-            var playerGrow = new Player($("#testplayerGrow"), "fire");
-            var mapGrow = new Map($(".game-container.grow"), 1, 1);
-            mapGrow.get(0, 0).setNumber(0);
-            var conGrow = new GameContainer(mapGrow);
-            mapGrow.changeTheme("fire");
-            mapGrow.get(0, 0).setClickEvent(function(position) {
-                conGrow.animatePlayerGrow(playerGrow, "fire", position, function() {});
-            });
+            var playerGrow;
+            var mapGrow;
+            var conGrow;
+
+            function initialGrow() {
+                playerGrow = new Player($("#testplayerGrow"), "fire");
+                mapGrow = new Map($(".game-container.grow"), 1, 1);
+                mapGrow.get(0, 0).setNumber(0);
+                conGrow = new GameContainer(mapGrow);
+                mapGrow.changeTheme("fire");
+                mapGrow.get(0, 0).setClickEvent(function(position) {
+                    conGrow.animatePlayerGrow(playerGrow, "fire", position, function() {
+                        mapGrow.jquerydom.html("");
+                        initialGrow();
+                    });
+                });
+            }
+            initialGrow();
+
 
             var playerDistribute = new Player($("#testplayerDistribute"), "fire");
             var mapDistribute = new Map($(".game-container.distribute"), 3, 3);
@@ -275,7 +286,7 @@
                     <div class="col-lg-6 col-md-8 col-sm-8">
                         <p style="height:300px;">
                             <img id="testplayerDistribute" class="img-responsive" src="images/fire/fire_element2.jpg" />
-                            <button id="distribute" style="color: black">点我发散</button>
+                            <button id="distribute" class="btn btn-success" style="font-size:1.5em;font-family:微软雅黑;">点我发散</button>
                         </p>
                     </div>
                 </div>
