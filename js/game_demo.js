@@ -75,7 +75,7 @@ function MapData(map) {
 	};
 }
 
-function GameDemo(map) {
+function GameDemo(map,player,com1,com2,com3) {
 	'use strict';
 	var con = new GameContainer(map);
 	var data = new MapData(map);
@@ -85,7 +85,7 @@ function GameDemo(map) {
 		severe: con.animatePlayerSevereHurt,
 		distribute: con.animatePlayerDistribute
 	};
-	
+	//this.change
 
 
 }
