@@ -47,6 +47,22 @@
 			);
 		});
 	</script>
+	<script type="text/javascript">
+		$(function () {
+			var player1 = new Player($("#player1"),"fire");
+			var com1 = new Player($("#com1"),"water");
+			var com2 = new Player($("#com2"),"land");
+			var com3 = new Player($("#com3"),"wind");
+			var map = new Map($("#map"),12,20);
+			var game = new GameDemo(map,player1,com1,com2,com3);
+			game.loadNumberSign(player1,$("#player1Num"));
+			game.loadNumberSign(com1,$("#com1Num"));
+			game.loadNumberSign(com2,$("#com2Num"));
+			game.loadNumberSign(com3,$("#com3Num"));
+			game.initialize();
+			game.changeView(player1);
+		});
+	</script>
 </head>
 
 <body>
@@ -111,19 +127,39 @@
 	</nav>
 	<div class="container shadowbox">
 		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4">3</div>
-			<div class="col-md-4"></div>
+			<div class="col-md-5"></div>
+			<div class="col-md-2">
+				<div class="shadowbox land"><img src="images/land/land_element2.jpg" class="img-responsive" id="com2">
+				</div>
+				<img src="images/land/land_cell.png" class="cell"><span id="com2Num" class="cutetext"></span>
+			</div>
+			<div class="col-md-5"></div>
 		</div>
 		<div class="row">
-			<div class="col-md-4">2</div>
-			<div class="col-md-4">Map</div>
-			<div class="col-md-4">4</div>
+			<div class="col-md-2">
+				<div class="shadowbox wind"><img src="images/wind/wind_element2.jpg" class="img-responsive" id="com3">
+				</div>
+				<img src="images/wind/wind_cell.png" class="cell"><span id="com3Num" class="cutetext"></span>
+			</div>
+			<div class="col-md-8">
+				<div class="shadowbox content">
+					<div id="map" style="margin: auto;"></div>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="shadowbox water"><img src="images/water/water_element2.jpg" class="img-responsive" id="com1">
+				</div>
+				<img src="images/water/water_cell.png" class="cell"><span id="com1Num" class="cutetext"></span>
+			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-4"></div>
-			<div class="col-md-4">1</div>
-			<div class="col-md-4"></div>
+			<div class="col-md-5"></div>
+			<div class="col-md-2">
+				<div class="shadowbox fire"><img src="images/fire/fire_element2.jpg" class="img-responsive" id="player1">
+				</div>
+				<img src="images/fire/fire_cell.png" class="cell"><span id="player1Num" class="cutetext"></span>
+				<div class="col-md-5"></div>
+			</div>
 		</div>
 	</div>
 </body>

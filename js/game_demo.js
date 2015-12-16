@@ -73,19 +73,152 @@ function MapData(map) {
 	this.get = function (row, column) {
 		return data[row][column];
 	};
+	this.set = function (row, column, value) {
+		data[row][column] = value;
+	};
+	this.calcNum = function (player, row, column) {
+		var action = {
+			grow: 0,
+			hurt: 1,
+			severe: 1,
+			distribute: 0
+		};
+		var count = function (i, j) {
+			if (i >= 0 && j >= 0 && data !== undefined && data[i] !== undefined && data[i][j] !== undefined && data[i][j] !== "none" && data[i][j] !== "picked") {
+				return getMapping(action, player, data[i][j]);
+			}
+			return 0;
+		}
+		var counter = 0;
+		counter += count(row - 1, column - 1);
+		counter += count(row - 1, column);
+		counter += count(row - 1, column + 1);
+		counter += count(row, column - 1);
+		counter += count(row, column + 1);
+		counter += count(row + 1, column - 1);
+		counter += count(row + 1, column);
+		counter += count(row + 1, column + 1);
+		return counter;
+	};
 }
 
-function GameDemo(map,player,com1,com2,com3) {
+var characterAttribute = {
+	fire: {
+		grow: 55,
+		hurt: 85,
+		severe: 85 * 3,
+		distribute: {
+			cost: 30,
+			inmap: 3
+		}
+	},
+	water: {
+		grow: 48,
+		hurt: 40,
+		severe: 40 * 3,
+		distribute: {
+			cost: 40,
+			inmap: 3
+		}
+	},
+	wind: {
+		grow: 42,
+		hurt: 55,
+		severe: 100,
+		distribute: {
+			cost: 20,
+			inmap: 3
+		}
+	},
+	land: {
+		grow: 45,
+		hurt: 55,
+		severe: 100,
+		distribute: {
+			cost: 70,
+			inmap: 3
+		}
+	}
+};
+
+function GameDemo(map, player, com1, com2, com3) {
 	'use strict';
+	player.isPlayer = true;
+	com1.isPlayer = true;
+	com2.isPlayer = true;
+	com3.isPlayer = true;
+	this.loadNumberSign = function (currplayer, numjquerydom) {
+		currplayer.numberSign = new NumberSign(10000, numjquerydom);
+	};
+	var nextPlayer = function (p) {
+		if (p.type == player.type) {
+			return com1;
+		} else if (p.type == com1.type) {
+			return com2;
+		} else if (p.type == com2.type) {
+			return com3;
+		} else {
+			return player;
+		}
+	};
 	var con = new GameContainer(map);
 	var data = new MapData(map);
-	var action = {
-		grow: con.animatePlayerGrow,
-		hurt: con.animatePlayerHurt,
-		severe: con.animatePlayerSevereHurt,
-		distribute: con.animatePlayerDistribute
+	var distributeCall = function (character) {
+		var successCount = 0;
+		//TODO: finish logic of put elements in maps. 
+		// Put elements in empty cells which are not picked. 
 	};
-	//this.change
+	var action = {
+		grow: function (character, ele, pos) {
+			con.animatePlayerGrow(character, ele, pos, function () {
+				character.numberSign.addNumber(characterAttribute[character.type].grow);
+			});
+		},
+		hurt: function (character, ele, pos) {
+			con.animatePlayerHurt(character, ele, pos, function () {
+				character.numberSign.addNumber(-characterAttribute[character.type].hurt);
+			});
+		},
+		severe: function (character, ele, pos) {
+			con.animatePlayerSevereHurt(character, ele, pos, function () {
+				character.numberSign.addNumber(-characterAttribute[character.type].severe);
+			});
+		},
+		distribute: function (character, ele, pos) {
+			con.animatePlayerDistribute(character, ele, pos);
+			distributeCall(character);
+		}
+	};
+	var onComplete;
+	var cgView = function (character) {
+		if (character.isPlayer === true) {
+			con.enablePlay();
+		} else {
+			con.disablePlay();
+		}
+		map.foreachCell(function (cell) {
+			cell.number.setNumber(data.calcNum(character, cell.row, cell.column));
+			cell.changeTheme(character.type);
+			cell.setClickEvent(function (pos) {
+				var ele = data.get(cell.row, cell.column);
+				if (ele !== "none") {
+					var todo = getMapping(action, character, ele);
+					todo(character, ele, pos);				
+				}
+				data.set(cell.row,cell.column,"picked");
+				onComplete(character);
+			});
+		});
+	};
+	this.changeView = cgView;
+	onComplete = function (ch) {
+		cgView(nextPlayer(ch));
+	};
+	this.initialize = function () {
+		data.generate();
+		// TODO: finish initialization of the game.
+	};
+	//TODO: finish distribution of player click.
 
 
 }
