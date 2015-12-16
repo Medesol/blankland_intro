@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>游戏演示_Blank's Land</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/defaultstyle.css">
+	<link rel="stylesheet" href="css/gamestyle.css">
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/game_container.js"></script>
+	<script src="js/game_demo.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			var ishovering = false;
+			$("#11").mouseenter(
+				function () {
+					$("#22").fadeIn();
+				}
+			);
+			$("#11").mouseleave(
+				function () {
+					if (!ishovering) {
+						setTimeout(function () {
+							if (!ishovering) {
+								$("#22").fadeOut();
+							}
+						}, 500);
+					}
+
+				}
+			);
+			$("#22").mouseenter(
+				function () {
+					ishovering = true;
+				}
+			);
+			$("#22").mouseleave(
+				function () {
+					ishovering = false;
+					setTimeout(function () {
+						$("#22").fadeOut();
+					}, 500);
+				}
+			);
+		});
+	</script>
+	<script type="text/javascript">
+		$(function () {
+			var player1 = new Player($("#player1"),"fire");
+			var com1 = new Player($("#com1"),"water");
+			var com2 = new Player($("#com2"),"land");
+			var com3 = new Player($("#com3"),"wind");
+			var map = new Map($("#map"),12,20);
+			var game = new GameDemo(map,player1,com1,com2,com3);
+			game.loadNumberSign(player1,$("#player1Num"));
+			game.loadNumberSign(com1,$("#com1Num"));
+			game.loadNumberSign(com2,$("#com2Num"));
+			game.loadNumberSign(com3,$("#com3Num"));
+			game.initialize();
+			game.changeView(player1);
+		});
+	</script>
+</head>
+
+<body>
+	<nav class="navbar navbar-fixed-top cool shadowbox" role="navigation">
+		<div class="container">
+
+			<div class="navbar-header">
+				<button type="button" class="pull-left btn btn-inverse navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="artfont">Blank's Land</span>
+				</button>
+
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-4 col-sm-3">
+						<div class="collapse navbar-collapse">
+							<ul class="nav navbar-nav">
+								<li><a href="index_new.html">主页</a></li>
+								<li>
+									<a href="character_intro.html" id="11">人物介绍</a>
+									<div id="22" style="text-align: center;display: none;">
+										<br>
+										<a href="character_intro.html?fire">火元素</a>
+										<br>
+										<br>
+										<a href="character_intro.html?water">水元素</a>
+										<br>
+										<br>
+										<a href="character_intro.html?land">土元素</a>
+										<br>
+										<br>
+										<a href="character_intro.html?wind">风元素</a>
+										<br>
+										<br>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-4 col-sm-4">
+						<div class="collapse navbar-collapse text-center">
+							<p class="artfont">Blank's Land</p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-4 col-sm-5">
+						<div class="collapse navbar-collapse">
+							<ul class="nav navbar-nav">
+								<li><a href="background_intro.html">游戏背景</a></li>
+								<li><a href="rules_intro.html">玩法介绍</a></li>
+								<li><a href="about_us.html">关于我们</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<!--.nav-collapse -->
+
+		</div>
+	</nav>
+	<div class="container shadowbox">
+		<div class="row">
+			<div class="col-md-5"></div>
+			<div class="col-md-2">
+				<div class="shadowbox land"><img src="images/land/land_element2.jpg" class="img-responsive" id="com2">
+				</div>
+				<img src="images/land/land_cell.png" class="cell"><span id="com2Num" class="cutetext"></span>
+			</div>
+			<div class="col-md-5"></div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+				<div class="shadowbox wind"><img src="images/wind/wind_element2.jpg" class="img-responsive" id="com3">
+				</div>
+				<img src="images/wind/wind_cell.png" class="cell"><span id="com3Num" class="cutetext"></span>
+			</div>
+			<div class="col-md-8">
+				<div class="shadowbox content">
+					<div id="map" style="margin: auto;"></div>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="shadowbox water"><img src="images/water/water_element2.jpg" class="img-responsive" id="com1">
+				</div>
+				<img src="images/water/water_cell.png" class="cell"><span id="com1Num" class="cutetext"></span>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-5"></div>
+			<div class="col-md-2">
+				<div class="shadowbox fire"><img src="images/fire/fire_element2.jpg" class="img-responsive" id="player1">
+				</div>
+				<img src="images/fire/fire_cell.png" class="cell"><span id="player1Num" class="cutetext"></span>
+				<div class="col-md-5"></div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

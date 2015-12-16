@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Blank's Land test</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/gamestyle.css">
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/game_container.js"></script>
+	<script>
+		$(function () {
+			var number = new NumberSign(3, $("#testNum"));
+			number.changeTheme("number-fire");
+			setTimeout(function () {
+				//number.addNumber(1);
+				// number.disappear();
+				number.changeTheme("number-water");
+				number.addNumber(1);
+				number.showSelf();
+
+			}, 1000);
+			setTimeout(function () {
+				number.changeTheme("number-fire");
+			}, 2000);
+			for (var i = 0; i < 6; i++) {
+				var cell = new Cell($("#test" + (i + 1)));
+				cell.changeTheme("fire");
+			}
+			var player = new Player($("#testplayer"), "fire");
+			var map = new Map($(".game-container"), 6, 8);
+			map.get(2, 3).setNumber(6);
+			var con = new GameContainer(map);
+			var num = new NumberSign(100, $("#testnum2"));
+			map.get(1, 2).setClickEvent(function (position) {
+				con.animatePlayerGrow(player, "fire", position, function () {
+					num.addNumber(1);
+				});
+			});
+			map.get(1, 3).setClickEvent(function (position) {
+				con.animatePlayerHurt(player, "land", position, function () {
+					num.addNumber(-2);
+				});
+			});
+			map.get(1, 4).setClickEvent(function (position) {
+				con.animatePlayerSevereHurt(player, "water", position, function () {
+					num.addNumber(-4);
+				});
+
+			});
+			map.get(1, 5).setClickEvent(function (position) {
+				con.animatePlayerDistribute(player, "wind", position);
+			});
+
+
+
+
+			var element = new Element("wind", $("#test1").offset(), $("#test4").offset());
+			var theme = ["fire", "water", "wind", "land"];
+			var themecounter = 0;
+
+			function nextTheme() {
+				var themedata = theme[themecounter];
+				themecounter++;
+				themecounter %= 4;
+				return themedata;
+			}
+			setInterval(function () {
+				map.changeTheme(nextTheme());
+				//map.get(2,2).addNumber(1);
+			}, 2000);
+
+
+			$("#grow").click(function () {
+				player.grow();
+				num.addNumber(1);
+			});
+			$("#hurt").click(function () {
+				player.hurt();
+				num.addNumber(-2);
+			});
+			$("#severe").click(function () {
+				player.severeHurt();
+				num.addNumber(-4);
+			});
+			$("#play").click(function () {
+				con.enablePlay();
+			});
+			$("#display").click(function () {
+				con.disablePlay();
+			});
+			$("#distribute").click(function () {
+				con.animateDistribute(player);
+			});
+		});
+	</script>
+</head>
+
+<body>
+	<p id="out"></p>
+	<div class="game-container"></div>
+	<p style="height:300px;"><img id="testplayer" class="img-responsive" src="images/fire/fire_element2.jpg" /></p>
+	<p style="background-color:gray">
+		<img src="images/fire/fire_cell.png" class="cell" style="position:static;" /><span class="cutetext">=</span> &nbsp;<span class="cutetext" style="text-align:center;" id="testnum2"></span>
+	</p>
+	<p>
+		<button id="grow">grow</button>
+		<button id="hurt">hurt</button>
+		<button id="severe">severe hurt</button>
+		<button id="play">play</button>
+		<button id="display">stop</button>
+		<button id="distribute">distribute</button>
+	</p>
+
+	<table>
+		<tr>
+			<td id="test1"></td>
+			<td id="test2"></td>
+			<td id="test3"></td>
+		</tr>
+		<tr>
+			<td id="test4"></td>
+			<td id="test5"></td>
+			<td id="test6"></td>
+		</tr>
+	</table>
+</body>
+
+</html>

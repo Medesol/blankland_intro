@@ -1,7 +1,6 @@
 body {
     background-image: url(../images/background.jpg);
 }
-
 .shadowbox1 {
     padding: 19px;
     margin-bottom: 20px;
@@ -10,60 +9,49 @@ body {
     border-radius: 3px;
     border: 0px;
 }
-
 .example {
     background-color: rgba(36, 182, 49, .7);
 }
-
 .part1 {
     background-image: url(../images/water-mask.png);
     font-family: "glyphicons halflings regular";
     font-size: 20px;
 }
-
 .part2 {
     background-image: url(../images/wind-mask.png);
     font-family: "glyphicons halflings regular";
     font-size: 20px;
 }
-
 .part3 {
     background-color: rgba(153, 56, 47, .7);
     font-family: "glyphicons halflings regular";
     font-size: 20px;
 }
-
 .part4 {
     background-image: url(../images/land-mask.png);
     font-family: "glyphicons halflings regular";
     font-size: 20px;
 }
-
 .part5 {
     background-color: rgba(36, 182, 49, .7);
     font-family: "glyphicons halflings regular";
     font-size: 20px;
 }
-
 .fill {
     width: 100%;
 }
-
 .fixed {
     position: fixed;
 }
-
 .right {
     float: right;
 }
-
-
 .qi a {
     text-decoration: none;
     color: #FFF;
-    font-size:1.3em;
+    font-size: 1.3em;
 }
-
 .cover {
     z-index: 99;
 }
+.row {}
