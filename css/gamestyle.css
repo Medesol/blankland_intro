@@ -1,0 +1,97 @@
+@font-face { 
+  font-family: Cute; 
+  src: url("../fonts/HelveticaRounded-Bold.otf"); 
+}
+.game-container {
+	width: 40%;
+}
+
+.game-container td{
+    width: 2.7em;
+    height: 2.7em;
+}
+
+.cutetext {
+	font-family: Cute;
+	font-size: 1.6em;
+	color: whitesmoke;
+	text-shadow: 1px 3px 2px #000000;
+}
+
+.cell{
+    width: 1.6em;
+    height: 1.6em;
+    text-align: center;
+    line-height: 1.1em;
+    font-size: 1.6em; 
+    font-family: Cute;
+    color: whitesmoke;
+    border-radius: 5px;
+}
+
+
+.fog{
+    background-image: url("../images/mist.png");
+    background-size: cover;
+}
+
+.fog:hover{
+    background-image: url("../images/mist_dark.png");
+    background-size: cover;
+}
+
+.fog-static{
+    background-image: url("../images/mist.png");
+    background-size: cover;
+}
+
+.fog-static-hover{
+    background-image: url("../images/mist_dark.png");
+    background-size: cover;
+}
+
+.number{
+    line-height: 1.5em;
+    text-shadow: 1px 3px 2px #000000;
+}
+
+.number-fire {
+    background-color: rgba(153, 56, 47, .7);
+}
+.number-water {
+    background-color: rgba(22, 114, 160, 0.7);
+}
+.number-wind {
+    background-color: rgba(86, 95, 86, 0.8);
+}
+.number-land {
+    background-color: rgba(128, 86, 25, 0.7);
+}
+
+.element{
+    position: absolute;
+    z-index: 999;
+    width: 2.6em;
+    height: 2.6em;
+    background-size: cover;
+}
+
+.cell-fire{
+    background-image: url("../images/fire/fire_cell.png");
+}
+
+.cell-water{
+    background-image: url("../images/water/water_cell.png");
+}
+
+.cell-wind{
+    background-image: url("../images/wind/wind_cell.png");
+}
+
+.cell-land{
+    background-image: url("../images/land/land_cell.png");
+}
+
+.disappear{
+    display: none;
+}
