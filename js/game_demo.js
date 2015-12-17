@@ -1,5 +1,5 @@
 var staticElements = ["fire", "water", "wind", "land", "none"];
-var staticPercentage = [0.2, 0.2, 0.2, 0.2, 0.2];
+var staticPercentage = [0.15, 0.15, 0.15, 0.15, 0.4];
 
 function getMapping(action, player, element) {
 	'use strict';
@@ -109,7 +109,7 @@ var characterAttribute = {
 		severe: 85 * 3,
 		distribute: {
 			cost: 30,
-			inmap: 3
+			inmap: 2
 		}
 	},
 	water: {
@@ -118,7 +118,7 @@ var characterAttribute = {
 		severe: 40 * 3,
 		distribute: {
 			cost: 40,
-			inmap: 3
+			inmap: 2
 		}
 	},
 	wind: {
@@ -127,7 +127,7 @@ var characterAttribute = {
 		severe: 100,
 		distribute: {
 			cost: 20,
-			inmap: 3
+			inmap: 2
 		}
 	},
 	land: {
@@ -136,7 +136,7 @@ var characterAttribute = {
 		severe: 100,
 		distribute: {
 			cost: 70,
-			inmap: 3
+			inmap: 2
 		}
 	}
 };
@@ -148,7 +148,7 @@ function GameDemo(map, player, com1, com2, com3) {
 	com2.isPlayer = true;
 	com3.isPlayer = true;
 	this.loadNumberSign = function (currplayer, numjquerydom) {
-		currplayer.numberSign = new NumberSign(10000, numjquerydom);
+		currplayer.numberSign = new NumberSign(300, numjquerydom);
 	};
 
 	var nextPlayer = function (p) {
