@@ -198,11 +198,15 @@ function Player(jquerydom, elementType) {
 	};
 	this.hurt = function () {
 		var curroffset = jquerydom.offset();
+		var tempdom = jquerydom.clone();
+		tempdom.css({visibility: "hidden"});
+		jquerydom.after(tempdom);
 		var currcss = jquerydom.css("position");
 		jquerydom.css({
 			position: "absolute"
 		});
 		jquerydom.offset(curroffset);
+		
 		jquerydom.animate({
 			left: "-=5px"
 		}, 10);
@@ -218,6 +222,7 @@ function Player(jquerydom, elementType) {
 		jquerydom.animate({
 			left: "+=5px"
 		}, 10, function () {
+			tempdom.remove();
 			jquerydom.css({
 				position: currcss
 			});
@@ -225,6 +230,9 @@ function Player(jquerydom, elementType) {
 	};
 	this.severeHurt = function () {
 		var curroffset = jquerydom.offset();
+		var tempdom = jquerydom.clone();
+		tempdom.css({visibility: "hidden"});
+		jquerydom.after(tempdom);
 		var currcss = jquerydom.css("position");
 		jquerydom.css({
 			position: "absolute"
@@ -245,6 +253,7 @@ function Player(jquerydom, elementType) {
 		jquerydom.animate({
 			left: "+=20px"
 		}, 10, function () {
+			tempdom.remove();
 			jquerydom.css({
 				position: currcss
 			});
