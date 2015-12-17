@@ -13,41 +13,7 @@
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/game_container.js"></script>
 	<script src="js/game_demo.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			var ishovering = false;
-			$("#11").mouseenter(
-				function () {
-					$("#22").fadeIn();
-				}
-			);
-			$("#11").mouseleave(
-				function () {
-					if (!ishovering) {
-						setTimeout(function () {
-							if (!ishovering) {
-								$("#22").fadeOut();
-							}
-						}, 500);
-					}
-
-				}
-			);
-			$("#22").mouseenter(
-				function () {
-					ishovering = true;
-				}
-			);
-			$("#22").mouseleave(
-				function () {
-					ishovering = false;
-					setTimeout(function () {
-						$("#22").fadeOut();
-					}, 500);
-				}
-			);
-		});
-	</script>
+	<script src="js/menu.js"></script>
 	<script type="text/javascript">
 		$(function () {
 			var player1 = new Player($("#player1"), "fire");
@@ -65,7 +31,22 @@
 			game.loadDistribute(com2, $("#com2dis"));
 			game.loadDistribute(com3, $("#com3dis"));
 			game.initialize();
-			game.changeView(player1);
+			var currstyle = "";
+			var charset = {
+				fire: "火",
+				water: "水",
+				wind: "风",
+				land: "土"
+			};
+			game.setPlayerStart(function (p) {
+				$("#info").removeClass(currstyle);
+				currstyle = p.type;
+				$("#info").html(charset[p.type] + "元素 正在思考");
+				$("#info").addClass(currstyle);
+			});
+			game.changeView(com2);
+
+
 		});
 	</script>
 </head>
@@ -88,7 +69,7 @@
 								<li><a href="index_new.html">主页</a></li>
 								<li>
 									<a href="character_intro.html" id="11">人物介绍</a>
-									<div id="22" style="text-align: center;display: none;">
+									<div id="22" class="cool shadowbox" style="text-align: center;display: none;">
 										<br>
 										<a href="character_intro.html?fire">火元素</a>
 										<br>
@@ -103,6 +84,9 @@
 										<br>
 										<br>
 									</div>
+								</li>
+								<li>
+									<a href="game_demo.html">游戏演示</a>
 								</li>
 							</ul>
 						</div>
@@ -162,7 +146,9 @@
 				</div>
 			</div>
 			<div class="col-md-6">
+				<div id="info" class="shadowbox text-center lead"></div>
 				<div id="map" class="game-container shadowbox content" style="margin: auto;"></div>
+
 			</div>
 			<div class="col-md-3">
 				<div class="row player-panel">
@@ -195,6 +181,18 @@
 						</div>
 					</div>
 				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row shadowbox copyright">
+			<div class="col-lg-offset-1 col-lg-3 col-md-4">
+				<img class="logo" src="images/logo_team.png">
+			</div>
+			<div class="col-lg-7 col-md-8 text-justify">
+				<p><span>Team简介┊About Team┊广告服务┊联系我们┊招聘信息┊网站律师┊通行证注册┊产品答疑</span></p>
+				<p>Copyright © 1997-2015 Team609, All Rights Reserved</p>
+				<p>Team609 版权所有</p>
 			</div>
 		</div>
 	</div>
