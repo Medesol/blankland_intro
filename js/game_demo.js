@@ -1,5 +1,5 @@
 var staticElements = ["fire", "water", "wind", "land", "none"];
-var staticPercentage = [0.2, 0.2, 0.2, 0.2, 0.2];
+var staticPercentage = [0.15, 0.15, 0.15, 0.15, 0.4];
 
 function getMapping(action, player, element) {
 	'use strict';
@@ -77,13 +77,13 @@ function MapData(map) {
 		data[row][column] = value;
 	};
 	this.calcNum = function (player, row, column) {
-		var action = {
-			grow: 0,
-			hurt: 1,
-			severe: 1,
-			distribute: 0
-		};
 		var count = function (i, j) {
+			var action = {
+				grow: 0,
+				hurt: 1,
+				severe: 1,
+				distribute: 0
+			};
 			if (i >= 0 && j >= 0 && data !== undefined && data[i] !== undefined && data[i][j] !== undefined && data[i][j] !== "none" && data[i][j] !== "picked") {
 				return getMapping(action, player, data[i][j]);
 			}
@@ -109,7 +109,7 @@ var characterAttribute = {
 		severe: 85 * 3,
 		distribute: {
 			cost: 30,
-			inmap: 3
+			inmap: 2
 		}
 	},
 	water: {
@@ -118,7 +118,7 @@ var characterAttribute = {
 		severe: 40 * 3,
 		distribute: {
 			cost: 40,
-			inmap: 3
+			inmap: 2
 		}
 	},
 	wind: {
@@ -127,7 +127,7 @@ var characterAttribute = {
 		severe: 100,
 		distribute: {
 			cost: 20,
-			inmap: 3
+			inmap: 2
 		}
 	},
 	land: {
@@ -136,7 +136,7 @@ var characterAttribute = {
 		severe: 100,
 		distribute: {
 			cost: 70,
-			inmap: 3
+			inmap: 2
 		}
 	}
 };
@@ -148,8 +148,9 @@ function GameDemo(map, player, com1, com2, com3) {
 	com2.isPlayer = true;
 	com3.isPlayer = true;
 	this.loadNumberSign = function (currplayer, numjquerydom) {
-		currplayer.numberSign = new NumberSign(10000, numjquerydom);
+		currplayer.numberSign = new NumberSign(300, numjquerydom);
 	};
+
 	var nextPlayer = function (p) {
 		if (p.type == player.type) {
 			return com1;
@@ -164,9 +165,25 @@ function GameDemo(map, player, com1, com2, com3) {
 	var con = new GameContainer(map);
 	var data = new MapData(map);
 	var distributeCall = function (character) {
-		var successCount = 0;
 		//TODO: finish logic of put elements in maps. 
 		// Put elements in empty cells which are not picked. 
+		var cellArray = [];
+		map.foreachCell(function (cell) {
+			var dat = data.get(cell.row, cell.column);
+			if (dat === "none") {
+				cellArray.push(cell);
+			}
+		});
+		var max = characterAttribute[character.type].distribute.inmap;
+		while (cellArray.length > max) {
+			var id = parseInt(Math.random() * cellArray.length);
+			cellArray.splice(id, 1);
+		}
+		var ix;
+		for (ix = 0; ix < cellArray.length; ix++) {
+			data.set(cellArray[ix].row, cellArray[ix].column, character.type);
+		}
+		return cellArray.length;
 	};
 	var action = {
 		grow: function (character, ele, pos) {
@@ -190,9 +207,37 @@ function GameDemo(map, player, com1, com2, com3) {
 		}
 	};
 	var onComplete;
+	this.loadDistribute = function (currplayer, jquerydom) {
+		jquerydom.attr({
+			disabled: "true"
+		});
+		currplayer.disButton = jquerydom;
+		jquerydom.click(function () {
+			currplayer.numberSign.addNumber(-characterAttribute[currplayer.type].distribute.cost);
+			con.animateDistribute(currplayer);
+			distributeCall(currplayer);
+			jquerydom.attr({
+				disabled: "true"
+			});
+		});
+	};
+	var playerDone = function (character) {
+
+	};
+	var playerStart = function (character) {
+		
+	};
+	this.setPlayerStart = function(func) {
+		playerStart = func;
+	};
+	this.setPlayerDone = function(func) {
+		playerDone = func;
+	};
 	var cgView = function (character) {
+		playerStart(character);
 		if (character.isPlayer === true) {
 			con.enablePlay();
+			character.disButton.removeAttr("disabled");
 		} else {
 			con.disablePlay();
 		}
@@ -203,15 +248,19 @@ function GameDemo(map, player, com1, com2, com3) {
 				var ele = data.get(cell.row, cell.column);
 				if (ele !== "none") {
 					var todo = getMapping(action, character, ele);
-					todo(character, ele, pos);				
+					todo(character, ele, pos);
 				}
-				data.set(cell.row,cell.column,"picked");
+				data.set(cell.row, cell.column, "picked");
 				onComplete(character);
 			});
 		});
 	};
 	this.changeView = cgView;
 	onComplete = function (ch) {
+		playerDone(ch);
+		ch.disButton.attr({
+			disabled: "true"
+		});
 		cgView(nextPlayer(ch));
 	};
 	this.initialize = function () {
