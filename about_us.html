@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们_Blank's Land</title>
+    <link href="Untitled-2.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/defaultstyle.css">
+    <link rel="shortcut icon" type="image/x-icon" href="/images/icon.png">
+    <!--[if IE]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var ishovering = false;
+            $("#11").mouseenter(
+                function () {
+                    $("#22").fadeIn();
+                }
+            );
+            $("#11").mouseleave(
+                function () {
+                    if (!ishovering) {
+                        setTimeout(function () {
+                            if (!ishovering) {
+                                $("#22").fadeOut();
+                            }
+                        }, 500);
+                    }
+
+                }
+            );
+            $("#22").mouseenter(
+                function () {
+                    ishovering = true;
+                }
+            );
+            $("#22").mouseleave(
+                function () {
+                    ishovering = false;
+                    setTimeout(function () {
+                        $("#22").fadeOut();
+                    }, 500);
+                }
+            );
+        });
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-fixed-top cool shadowbox" role="navigation">
+        <div class="container">
+
+            <div class="navbar-header">
+                <button type="button" class="pull-left btn btn-inverse navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="artfont">Blank's Land</span>
+                </button>
+
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-4 col-sm-3">
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="index_new.html">主页</a></li>
+                                <li>
+                                    <a href="character_intro.html" id="11">人物介绍</a>
+                                    <div id="22" style="text-align: center;display: none;">
+                                        <br>
+                                        <a href="character_intro.html?fire">火元素</a>
+                                        <br>
+                                        <br>
+                                        <a href="character_intro.html?water">水元素</a>
+                                        <br>
+                                        <br>
+                                        <a href="character_intro.html?land">土元素</a>
+                                        <br>
+                                        <br>
+                                        <a href="character_intro.html?wind">风元素</a>
+                                        <br>
+                                        <br>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-4 col-sm-4">
+                        <div class="collapse navbar-collapse text-center">
+                            <p class="artfont">Blank's Land</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-4 col-sm-5">
+                        <div class="collapse navbar-collapse">
+                            <ul class="nav navbar-nav">
+                                <li><a href="background_intro.html">游戏背景</a></li>
+                                <li><a href="rules_intro.html">玩法介绍</a></li>
+                                <li><a href="about_us.html">关于我们</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--.nav-collapse -->
+
+        </div>
+    </nav>
+    <div class="container center-block">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="shadowbox fire" style="list-style-type:none">
+                    <h2>小组成员</h2>
+                    <hr>
+                    <li>组长：Medesol</li>
+                    <li>组员：Ledenel</li>
+                    <li>组员：zjykljf</li>
+                    <li>组员：zhanglip</li>
+                    <li>组员：tilller</li>
+                </div>
+                <div class="shadowbox water" style="list-style-type:none">
+                    <h2>小组分工</h2>
+                    <hr>
+                    <li>组长Medesol负责游戏背景介绍页面的开发</li>
+                    <li>组员Ledenel负责游戏人物介绍页面的开发</li>
+                    <li>组员zjykljf负责游戏主页页面的开发</li>
+                    <li>组员zhanglip负责游戏玩法介绍页面的开发</li>
+                    <li>组员tilller负责游戏关于我们页面的开发</li>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="shadowbox land">
+                    <hr>
+                    <p>
+                        本游戏是一款适合所有年龄范围的人群的益智游戏。游戏规则较为简单，熟记就很快入门，多次试玩便会逐渐学会灵活运用各元素的技能，
+                    </p>
+                    <p>
+                        本游戏目的是帮助大家了解希腊古典神话，启发玩家的思维，究竟该如何选择，选择权都掌握在玩家自身手中。让大家在一个共同的平台 上切磋技巧，同时让大家体会竞争和合作的重要性，以及如何制定战略才能打败其他元素获得最终胜利。
+                    </p>
+                    <hr>
+                </div>
+                <div class="shadowbox wind">
+                    <h3 style="color:red">注意</h3>
+                    <hr>
+                    <p>
+                        本游戏纯属虚构。
+                    </p>
+                    <p>
+                        希望大家在玩游戏后，不要将游戏中各种技能在生活中对他人使用。 不要将游戏中的情绪迁移到生活之中， 不要沉浸在游戏的假想世界之中。
+                    </p>
+                    <p>希望玩家能够真正喜欢这款游戏，也鼓励更多的人参与我们的游戏</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="container shadowbox content">
+                    <div class="row">
+                        <div class="col-md-push-2 col-md-8">
+                            <div id="aboutCarousel" class="carousel slide">
+                                <!-- 轮播（Carousel）指标 -->
+                                <ol class="carousel-indicators">
+                                    <li data-target="#aboutCarousel" data-slide-to="0" class="active"></li>
+                                    <li data-target="#aboutCarousel" data-slide-to="1"></li>
+                                    <li data-target="#aboutCarousel" data-slide-to="2"></li>
+                                    <li data-target="#aboutCarousel" data-slide-to="3"></li>
+                                    <li data-target="#aboutCarousel" data-slide-to="4"></li>
+                                </ol>
+                                <!-- 轮播（Carousel）项目 -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+
+                                        <div class="row">
+                                            <div class="col-md-4 col-lg-4"> <img src="images/Medesol.jpg" class="img-responsive img-circle" /></div>
+                                            <div class="col-md-8 col-lg-8 shadowbox content">
+
+                                                <p class="lead">
+                                                    我很意外的当了这个项目的组长，然而各种犯懒导致项目进行的并不是那么迅速和顺利 不过随着大家进入状态项目也开始步入正轨 虽然我这个组长做的事情不是最多的，但是依然很有成就感~
+                                                </p>
+
+                                            </div>
+                                        </div>
+                                        <div class="carousel-caption">Medesol</div>
+                                    </div>
+                                    <div class="item">
+
+                                        <div class="row">
+                                            <div class="col-md-4 col-lg-4"><img src="images/ledenel.jpg" class="img-responsive img-circle" /></div>
+                                            <div class="col-md-8 col-lg-8 shadowbox content">
+                                                <p class="lead">其实一开始叫我加特效我是拒绝的，因为你不能说让我加我就加。第一我要试一下，万一不炫酷怎么办。但是我加了以后发现网页很酷很炫。我要让你们看到，我加了特技以后以后是这个样子，你们加了特技也是这个样子。
+                                                </p>
+                                            </div>
+                                        </div>
+<div class="carousel-caption">Ledenel</div>
+                                    </div>
+                                    <div class="item">
+
+                                        <div class="row">
+                                            <div class="col-md-4 col-lg-4"><img src="images/zjykljf.jpg" class="img-responsive img-circle" /></div>
+                                            <div class="col-md-8 col-lg-8 shadowbox content">
+                                                <p class="lead">我就是来卖个萌的0.0
+                                                </p>
+                                            </div>
+                                        </div>
+<div class="carousel-caption">zjykljf</div>
+                                    </div>
+                                    <div class="item">
+
+                                        <div class="row">
+                                            <div class="col-md-4 col-lg-4"><img src="images/zhanglip.jpg" class="img-responsive img-circle" /></div>
+                                            <div class="col-md-8 col-lg-8 shadowbox content">
+                                                <p class="lead">其实一开始让我做玩法介绍时我也是拒绝的。什么规则啊、UI图啊简直不要不要的。但是后来发现这个游戏真的很有意思，再加上炫酷的游戏背景还有人物介绍，整体逼格立刻提升了有没有
+                                                </p>
+                                            </div>
+                                        </div>
+<div class="carousel-caption">zhanglip</div>
+                                    </div>
+                                    <div class="item">
+
+                                        <div class="row">
+                                            <div class="col-md-4 col-lg-4"><img src="images/tiller.jpg" class="img-responsive img-circle" /></div>
+                                            <div class="col-md-8 col-lg-8 shadowbox content">
+                                                <p class="lead">我默默看着你掉坑的样子。
+                                                </p>
+                                            </div>
+                                        </div>
+<div class="carousel-caption">tilller</div>
+                                    </div>
+                                </div>
+                                <a class="carousel-control left" href="#aboutCarousel" data-slide="prev">&lsaquo;</a>
+                                <a class="carousel-control right" href="#aboutCarousel" data-slide="next">&rsaquo;</a>
+                            </div>
+                        </div>
+                        <!-- 轮播（Carousel）导航 -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row shadowbox copyright">
+            <div class="col-lg-offset-1 col-lg-3 col-md-4">
+                <img class="logo" src="images/logo_team.png">
+            </div>
+            <div class="col-lg-7 col-md-8 text-justify">
+                <p><span>Team简介┊About Team┊广告服务┊联系我们┊招聘信息┊网站律师┊通行证注册┊产品答疑</span></p>
+                <p>Copyright © 1997-2015 Team609, All Rights Reserved</p>
+                <p>Team609 版权所有</p>
+            </div>
+        </div>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
