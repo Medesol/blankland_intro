@@ -31,7 +31,22 @@
 			game.loadDistribute(com2, $("#com2dis"));
 			game.loadDistribute(com3, $("#com3dis"));
 			game.initialize();
-			game.changeView(player1);
+			var currstyle = "";
+			var charset = {
+				fire: "火",
+				water: "水",
+				wind: "风",
+				land: "土"
+			};
+			game.setPlayerStart(function (p) {
+				$("#info").removeClass(currstyle);
+				currstyle = p.type;
+				$("#info").html(charset[p.type] + "元素 正在思考");
+				$("#info").addClass(currstyle);
+			});
+			game.changeView(com2);
+
+
 		});
 	</script>
 </head>
@@ -131,7 +146,9 @@
 				</div>
 			</div>
 			<div class="col-md-6">
+				<div id="info" class="shadowbox text-center lead"></div>
 				<div id="map" class="game-container shadowbox content" style="margin: auto;"></div>
+
 			</div>
 			<div class="col-md-3">
 				<div class="row player-panel">
