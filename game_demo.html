@@ -13,41 +13,7 @@
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/game_container.js"></script>
 	<script src="js/game_demo.js"></script>
-	<script type="text/javascript">
-		$(document).ready(function () {
-			var ishovering = false;
-			$("#11").mouseenter(
-				function () {
-					$("#22").fadeIn();
-				}
-			);
-			$("#11").mouseleave(
-				function () {
-					if (!ishovering) {
-						setTimeout(function () {
-							if (!ishovering) {
-								$("#22").fadeOut();
-							}
-						}, 500);
-					}
-
-				}
-			);
-			$("#22").mouseenter(
-				function () {
-					ishovering = true;
-				}
-			);
-			$("#22").mouseleave(
-				function () {
-					ishovering = false;
-					setTimeout(function () {
-						$("#22").fadeOut();
-					}, 500);
-				}
-			);
-		});
-	</script>
+	<script src="js/menu.js"></script>
 	<script type="text/javascript">
 		$(function () {
 			var player1 = new Player($("#player1"), "fire");
@@ -88,7 +54,7 @@
 								<li><a href="index_new.html">主页</a></li>
 								<li>
 									<a href="character_intro.html" id="11">人物介绍</a>
-									<div id="22" style="text-align: center;display: none;">
+									<div id="22" class="cool shadowbox" style="text-align: center;display: none;">
 										<br>
 										<a href="character_intro.html?fire">火元素</a>
 										<br>
