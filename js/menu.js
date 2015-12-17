@@ -25,7 +25,7 @@ $(document).ready(function () {
 							$("#22").stop(true, true);
 						});
 					}
-				}, 500);
+				}, 100);
 			}
 
 		}
@@ -42,7 +42,7 @@ $(document).ready(function () {
 				$("#22").fadeOut(300, function () {
 					$("#22").stop(true, true);
 				});
-			}, 500);
+			}, 100);
 		}
 	);
 });
