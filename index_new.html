@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
-	<title>首页_Blank's Land</title>
+	<title>首页_Element's Land</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
 	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
@@ -24,7 +24,8 @@
 		$(function () {
 			//alert("width" + $(window).width() + "height" + $(window).height());
 			setInterval(function () {
-				var eledom = $("<img src='images/star.png' style='position:fixed; z-index:-99;width: 12em;'>");
+				var i = parseInt(Math.random() * 4);
+				var eledom = $("<img src='images/star"+i+".png' style='position:fixed; z-index:-99;width: 7em;'>");
 				var selwidth = eledom.width();
 				var selheight = eledom.height();
 				//eledom.addClass("cell-" + elementType);
@@ -32,12 +33,12 @@
 				var height = $(window).height();
 				var position = {
 					left: (width-selwidth + height)*Math.random(),
-					top: 0-selheight,
+					top: 0-200,
 				};
 				var towards = {
-					left: 0,
+					left: 0-200,
 					top: position.left,
-					opacity: -0.5
+					opacity: -0.3
 				};
 				var ptowards = {
 					left: towards.left / 2,
@@ -48,11 +49,11 @@
 				eledom.appendTo("body");
 				//var cssto = {left:towards+"px"};
 				//eledom.css({opacity: 0});
-				eledom.fadeIn(200).animate(towards, towards.top * 3,"linear" ,function () {
+				eledom.animate(towards, (towards.top+200) * 1.5,"linear" ,function () {
 					eledom.remove();
 				});
 				
-			}, 100);
+			}, 150);
 
 		});
 	</script>
@@ -135,8 +136,8 @@
 					<h2>游戏玩法</h2>
 					<p>选择一种元素：水，火，土，风，</p>
 					<p>探索迷雾，</p>
-					<p>通过元素间的相互作用来使Blank长大，</p>
-					<p>以Blank的大小来决定胜负的游戏！</p>
+					<p>通过元素间的相互作用来使Element长大，</p>
+					<p>以Element的大小来决定胜负的游戏！</p>
 					<p>觉醒诸神的能力来变得更加强大！</p>
 					<p>同样的，游戏中还有许多奇特道具等你发现！</p>
 				</div>
