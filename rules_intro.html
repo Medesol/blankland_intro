@@ -18,140 +18,12 @@
     <link rel="shortcut icon" type="image/x-icon" href="/images/icon.png">
     <script src="js/game_container.js"></script>
     <link rel="stylesheet" href="css/gamestyle.css">
+    <script src="js/menu.js"></script>
     <!--[if IE]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var ishovering = false;
-            $("#11").mouseenter(
-                function() {
-                    $("#22").fadeIn();
-                }
-            );
-            $("#11").mouseleave(
-                function() {
-                    if (!ishovering) {
-                        setTimeout(function() {
-                            if (!ishovering) {
-                                $("#22").fadeOut();
-                            }
-                        }, 500);
-                    }
-
-                }
-            );
-            $("#22").mouseenter(
-                function() {
-                    ishovering = true;
-                }
-            );
-            $("#22").mouseleave(
-                function() {
-                    ishovering = false;
-                    setTimeout(function() {
-                        $("#22").fadeOut();
-                    }, 500);
-                }
-            );
-        });
-
-    </script>
-    <script>
-        $(function() {
-            var playerGrow;
-            var mapGrow;
-            var conGrow;
-
-            function initialGrow() {
-                playerGrow = new Player($("#testplayerGrow"), "fire");
-                mapGrow = new Map($(".game-container.grow"), 1, 1);
-                mapGrow.get(0, 0).setNumber(0);
-                conGrow = new GameContainer(mapGrow);
-                mapGrow.changeTheme("fire");
-                mapGrow.get(0, 0).setClickEvent(function(position) {
-                    conGrow.animatePlayerGrow(playerGrow, "fire", position, function() {
-                        mapGrow.jquerydom.html("");
-                        initialGrow();
-                    });
-                });
-            }
-            initialGrow();
-
-
-            var playerDistribute = new Player($("#testplayerDistribute"), "fire");
-            var mapDistribute = new Map($(".game-container.distribute"), 3, 3);
-            var conDistribute = new GameContainer(mapDistribute);
-            $("#distribute").click(function() {
-                conDistribute.animateDistribute(playerDistribute, "fire", playerDistribute.jquerydom.offset());
-            });
-
-            var mapshow;
-            var flag;
-            var water;
-
-            function initial() {
-                mapshow = new Map($(".game-container.show"), 2, 3);
-                flag = 0;
-                water = 0;
-                $("#turn").text("点我");
-                mapshow.get(0, 1).setNumber(2);
-                mapshow.get(1, 0).setNumber(1);
-                mapshow.get(1, 1).setNumber(2);
-                mapshow.get(1, 2).setNumber(1);
-                mapshow.get(0, 0).setClickEvent(function(position) {
-                    new Element("water", position, position,
-                        function() {
-                            water++;
-                            if (water == 2) {
-                                mapshow.jquerydom.html("");
-                                initial();
-                            }
-                        });
-                    mapshow.get(0, 0).fog.disappear();
-                    mapshow.get(0, 0).number.showSelf();
-
-                });
-                mapshow.get(0, 2).setClickEvent(function(position) {
-                    new Element("water", position, position,
-                        function() {
-                            water++;
-                            if (water == 2) {
-                                mapshow.jquerydom.html("");
-                                initial();
-                            }
-
-                        });
-                    mapshow.get(0, 2).fog.disappear();
-                    mapshow.get(0, 2).number.showSelf();
-                });
-            }
-            initial();
-            $("#turn").click(function() {
-                if (flag == 0) {
-                    flag = 1;
-                    $("#turn").text("接着点我");
-                    mapshow.get(0, 1).fog.disappear();
-                    mapshow.get(0, 1).number.showSelf();
-                    mapshow.get(1, 0).fog.disappear();
-                    mapshow.get(1, 0).number.showSelf();
-                } else {
-                    new Element("water", mapshow.get(0, 0).jquerydom.offset(), mapshow.get(0, 0).jquerydom.offset());
-                    mapshow.get(0, 0).fog.disappear();
-                    mapshow.get(0, 0).number.showSelf();
-                    new Element("water", mapshow.get(0, 2).jquerydom.offset(), mapshow.get(0, 2).jquerydom.offset(), function() {
-                        mapshow.jquerydom.html("");
-                        initial();
-                    });
-                    mapshow.get(0, 2).fog.disappear();
-                    mapshow.get(0, 2).number.showSelf();
-                }
-
-            });
-        });
-
-    </script>
+    <script src="js/rules_intro.js"></script>
 </head>
 
 <body>
@@ -160,7 +32,7 @@
 
             <div class="navbar-header">
                 <button type="button" class="pull-left btn btn-inverse navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="artfont">Blank's Land</span>
+                    <span class="artfont">Element's Land</span>
                 </button>
 
             </div>
@@ -172,7 +44,7 @@
                                 <li><a href="index_new.html">主页</a></li>
                                 <li>
                                     <a href="character_intro.html" id="11">人物介绍</a>
-                                    <div id="22" style="text-align: center;display: none;">
+                                    <div id="22" class="cool shadowbox" style="text-align: center;display: none;">
                                         <br>
                                         <a href="character_intro.html?fire">火元素</a>
                                         <br>
@@ -188,12 +60,15 @@
                                         <br>
                                     </div>
                                 </li>
+                                <li>
+                                    <a href="game_demo.html">游戏演示</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-4">
                         <div class="collapse navbar-collapse text-center">
-                            <p class="artfont">Blank's Land</p>
+                            <p class="artfont">Element's Land</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-5">
@@ -207,9 +82,6 @@
                     </div>
                 </div>
             </div>
-
-
-
             <!--.nav-collapse -->
 
         </div>
@@ -264,6 +136,7 @@
                 <hr>
                 <br>玩家有两种动作
                 <br>拾取和发散。
+                <br/>
                 <br>拾取即翻开地图中的迷雾并得到相应物件。
                 <div class="row">
                     <div class="col-lg-6 col-md-4 col-sm-4">
@@ -271,12 +144,12 @@
                     </div>
                     <div class="col-lg-6 col-md-8 col-sm-8">
                         <p style="height:300px;">
-                            <img id="testplayerGrow" class="img-responsive" src="images/fire/fire_element2.jpg" />
+                            <img id="testplayerGrow" class="img-responsive" src="images/fire/fire_element2.png" />
                         </p>
                     </div>
                 </div>
                 <br>发散即将自己属性的元素随机发散在迷雾中，该动作有损害。
-                <br /><font size="+1">（注：发散过程中，如玩家将元素发散至与自己相同的元素上，则该元素周围的迷雾中会随机出现一个相同的元素；如发散至失调元素上则无任何反应；如发散至协调元素上，则该种元素会被发散至地图中任意两个迷雾中。）</font>
+                <br /><font size="+1">（注：此动作只会将元素发散至没有被翻开的空格子中，若地图中已经布满元素，则发散无效但同样会有损害）</font>
                 <br>
                 <br>
                 <div class="row">
@@ -285,7 +158,7 @@
                     </div>
                     <div class="col-lg-6 col-md-8 col-sm-8">
                         <p style="height:300px;">
-                            <img id="testplayerDistribute" class="img-responsive" src="images/fire/fire_element2.jpg" />
+                            <img id="testplayerDistribute" class="img-responsive" src="images/fire/fire_element2.png" />
                             <button id="distribute" class="btn btn-success" style="font-size:1.5em;font-family:微软雅黑;">点我发散</button>
                         </p>
                     </div>
@@ -300,9 +173,9 @@
             <div class="shadowbox part3" id="3">
                 <hr>
                 <br>迷雾中有空地和不同的元素。
-                <br>如果拾取到的元素与玩家的属性相同，则Blank长大；
-                <br>如果拾取到的元素为协调元素，则Blank会无损害发散元素；
-                <br>如果拾取到的元素为失调元素，则Blank会受到不同程度的伤害。
+                <br>如果拾取到的元素与玩家的属性相同，则Element长大；
+                <br>如果拾取到的元素为协调元素，则Element会无损害发散元素；
+                <br>如果拾取到的元素为失调元素，则Element会受到不同程度的伤害。
                 <br>
                 <br>
                 <img src="images/relationship.png" width="90%" />
@@ -316,6 +189,8 @@
             <div class="shadowbox part4" id="4">
                 <hr>
                 <br>空地会显示其周围迷雾中失调元素的数量。
+                <br/>
+                <br/>
                 <div class="row">
                     <div class="col-lg-6 col-md-4">
                         <div class="game-container show"></div>
@@ -330,29 +205,27 @@
 
             <div class="shadowbox part5" id="5">
                 <hr>
-                <br>玩家选择的是火元素，那么火元素会使Blank长大；
-                <br>风元素使Blank无损害发散火元素；
-                <br>土元素和水元素分别会使Blank受到损伤和严重损伤。
+                <br>玩家选择的是火元素，那么火元素会使Element长大；
+                <br>风元素使Element无损害发散火元素；
+                <br>土元素和水元素分别会使Element受到损伤和严重损伤。
                 <br>
                 <br>
-                <img src="images/example.png" width="90%" />
-                <br>
-                <br>
-                <br>
+                <div class="row">
+                    <div class="col-lg-6 col-md-8">
+                        <p>
+                            <img id="testplayerExample" class="img-responsive" src="images/fire/fire_element2.png" />
+                        </p>
+                        <p>
+                            <img src="images/fire/fire_cell.png" class="cell" style="position:static;" /><span class="cutetext">=</span> &nbsp;<span class="cutetext" style="text-align:center;" id="testnum2"></span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6 col-md-4 ">
 
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-
-
-
-
-
-
-
-
-
     <div class="container">
         <div class="row shadowbox copyright">
             <div class="col-lg-offset-1 col-lg-3 col-md-4">
