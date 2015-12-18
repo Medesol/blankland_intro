@@ -11,45 +11,11 @@
     <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/defaultstyle.css">
     <link rel="shortcut icon" type="image/x-icon" href="/images/icon.png">
+    <script src="js/menu.js"></script>
     <!--[if IE]>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            var ishovering = false;
-            $("#11").mouseenter(
-                function () {
-                    $("#22").fadeIn();
-                }
-            );
-            $("#11").mouseleave(
-                function () {
-                    if (!ishovering) {
-                        setTimeout(function () {
-                            if (!ishovering) {
-                                $("#22").fadeOut();
-                            }
-                        }, 500);
-                    }
-
-                }
-            );
-            $("#22").mouseenter(
-                function () {
-                    ishovering = true;
-                }
-            );
-            $("#22").mouseleave(
-                function () {
-                    ishovering = false;
-                    setTimeout(function () {
-                        $("#22").fadeOut();
-                    }, 500);
-                }
-            );
-        });
-    </script>
 </head>
 
 <body>
@@ -58,7 +24,7 @@
 
             <div class="navbar-header">
                 <button type="button" class="pull-left btn btn-inverse navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="artfont">Blank's Land</span>
+                    <span class="artfont">Element's Land</span>
                 </button>
 
             </div>
@@ -70,7 +36,7 @@
                                 <li><a href="index_new.html">主页</a></li>
                                 <li>
                                     <a href="character_intro.html" id="11">人物介绍</a>
-                                    <div id="22" style="text-align: center;display: none;">
+                                    <div id="22" class="cool shadowbox" style="text-align: center;display: none;">
                                         <br>
                                         <a href="character_intro.html?fire">火元素</a>
                                         <br>
@@ -86,12 +52,15 @@
                                         <br>
                                     </div>
                                 </li>
+                                <li>
+                                    <a href="game_demo.html">游戏演示</a>
+                                </li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-4 col-sm-4">
                         <div class="collapse navbar-collapse text-center">
-                            <p class="artfont">Blank's Land</p>
+                            <p class="artfont">Element's Land</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-4 col-sm-5">
@@ -105,9 +74,6 @@
                     </div>
                 </div>
             </div>
-
-
-
             <!--.nav-collapse -->
 
         </div>
@@ -199,7 +165,7 @@
                                                 </p>
                                             </div>
                                         </div>
-<div class="carousel-caption">Ledenel</div>
+                                        <div class="carousel-caption">Ledenel</div>
                                     </div>
                                     <div class="item">
 
@@ -210,7 +176,7 @@
                                                 </p>
                                             </div>
                                         </div>
-<div class="carousel-caption">zjykljf</div>
+                                        <div class="carousel-caption">zjykljf</div>
                                     </div>
                                     <div class="item">
 
@@ -221,7 +187,7 @@
                                                 </p>
                                             </div>
                                         </div>
-<div class="carousel-caption">zhanglip</div>
+                                        <div class="carousel-caption">zhanglip</div>
                                     </div>
                                     <div class="item">
 
@@ -232,7 +198,7 @@
                                                 </p>
                                             </div>
                                         </div>
-<div class="carousel-caption">tilller</div>
+                                        <div class="carousel-caption">tilller</div>
                                     </div>
                                 </div>
                                 <a class="carousel-control left" href="#aboutCarousel" data-slide="prev">&lsaquo;</a>
