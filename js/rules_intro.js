@@ -114,7 +114,7 @@ $(function () {
         mapExample = new Map($(".game-container.Example"), 6, 7);
         for (i = 0; i < 6; i++) {
             for (j = 0; j < 7; j++) {
-                if ((i != 2) || (j != 1 || j != 2 || j != 3 || j != 4)) {
+                if (!((i == 2) && (j == 1 || j == 2 || j == 3 || j == 4))) {
                     mapExample.get(i, j).fog.jquerydom.removeClass("fog");
                     mapExample.get(i, j).fog.jquerydom.addClass("fog-static");
                     mapExample.get(i, j).fog.whenOpen(function () {});
