@@ -2,201 +2,230 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>游戏演示_Element's Land</title>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/defaultstyle.css">
-    <link rel="stylesheet" href="css/gamestyle.css">
-    <link rel="stylesheet" href="css/game_demo.css">
-    <script src="js/jquery-1.11.3.min.js"></script>
-    <script src="js/game_container.js"></script>
-    <script src="js/game_demo.js"></script>
-    <script src="js/menu.js"></script>
-    <script type="text/javascript">
-        $(function() {
-            var player1 = new Player($("#player1"), "fire");
-            var com1 = new Player($("#com1"), "water");
-            var com2 = new Player($("#com2"), "land");
-            var com3 = new Player($("#com3"), "wind");
-            var map = new Map($("#map"), 14, 14);
-            var game = new GameDemo(map, player1, com1, com2, com3);
-            game.loadNumberSign(player1, $("#player1Num"));
-            game.loadNumberSign(com1, $("#com1Num"));
-            game.loadNumberSign(com2, $("#com2Num"));
-            game.loadNumberSign(com3, $("#com3Num"));
-            game.loadDistribute(player1, $("#player1dis"));
-            game.loadDistribute(com1, $("#com1dis"));
-            game.loadDistribute(com2, $("#com2dis"));
-            game.loadDistribute(com3, $("#com3dis"));
-            game.initialize();
-            var currstyle = "";
-            var charset = {
-                fire: "火",
-                water: "水",
-                wind: "风",
-                land: "土"
-            };
-            game.setPlayerStart(function(p) {
-                $("#info").removeClass(currstyle);
-                currstyle = p.type;
-                $("#info").html(charset[p.type] + "元素 正在思考");
-                $("#info").addClass(currstyle);
-            });
-            game.changeView(com2);
+	<meta charset="UTF-8">
+	<title>游戏演示_Element's Land</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/bootstrap-theme.min.css">
+	<link rel="stylesheet" href="css/defaultstyle.css">
+	<link rel="stylesheet" href="css/gamestyle.css">
+	<link rel="stylesheet" href="css/game_demo.css">
+	<audio id="outSound">
+		<source src="sounds/out.mp3" />
+		<source src="sounds/out.wav" />
+	</audio>
+	<audio id="growSound">
+		<source src="sounds/grow.mp3" />
+		<source src="sounds/grow.wav" />
+	</audio>
+	<audio id="hurtSound">
+		<source src="sounds/hurt.mp3" />
+		<source src="sounds/hurt.wav" />
+	</audio>
+	<audio id="severeSound">
+		<source src="sounds/severe.mp3" />
+		<source src="sounds/severe.wav" />
+	</audio>
+	<audio id="distributeSound">
+		<source src="sounds/distribute.mp3" />
+		<source src="sounds/distribute.wav" />
+	</audio>
+	<script src="js/jquery-1.11.3.min.js"></script>
+	<script src="js/game_container.js"></script>
+	<script src="js/game_demo.js"></script>
+	<script src="js/menu.js"></script>
+	<script type="text/javascript">
+		$(function () {
+			sound.click = $("#outSound")[0];
+			sound.grow = $("#growSound")[0];
+			sound.hurt = $("#hurtSound")[0];
+			sound.severe = $("#severeSound")[0];
+			sound.distribute = $("#distributeSound")[0];
+			sound.click.volume = 0.2;
+			sound.grow.volume = 0.1;
+			sound.hurt.volume = 0.6;
+			sound.severe.volume = 1;
+			sound.distribute.volume = 0.2;
+			var player1 = new Player($("#player1"), "fire");
+			var com1 = new Player($("#com1"), "water");
+			var com2 = new Player($("#com2"), "land");
+			var com3 = new Player($("#com3"), "wind");
+			var map = new Map($("#map"), 14, 14);
+			var game = new GameDemo(map, player1, com1, com2, com3);
+			game.loadNumberSign(player1, $("#player1Num"));
+			game.loadNumberSign(com1, $("#com1Num"));
+			game.loadNumberSign(com2, $("#com2Num"));
+			game.loadNumberSign(com3, $("#com3Num"));
+			game.loadDistribute(player1, $("#player1dis"));
+			game.loadDistribute(com1, $("#com1dis"));
+			game.loadDistribute(com2, $("#com2dis"));
+			game.loadDistribute(com3, $("#com3dis"));
+			game.initialize();
+			var currstyle = "";
+			var charset = {
+				fire: "火",
+				water: "水",
+				wind: "风",
+				land: "土"
+			};
+			game.setPlayerStart(function (p) {
+				$("#info").removeClass(currstyle);
+				currstyle = p.type;
+				$("#info").html(charset[p.type] + "元素 正在思考");
+				$("#info").addClass(currstyle);
+			});
+			game.changeView(com2);
 
 
-        });
-
-    </script>
+		});
+	</script>
 </head>
 
 <body>
-    <nav class="navbar navbar-fixed-top cool shadowbox" role="navigation">
-        <div class="container">
+	<nav class="navbar navbar-fixed-top cool shadowbox" role="navigation">
+		<div class="container">
 
-            <div class="navbar-header">
-                <button type="button" class="pull-left btn btn-inverse navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="artfont">Element's Land</span>
-                </button>
+			<div class="navbar-header">
+				<button type="button" class="pull-left btn btn-inverse navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="artfont">Element's Land</span>
+				</button>
 
-            </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-3 col-md-4 col-sm-3">
-                        <div class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li><a href="index_new.html">主页</a></li>
-                                <li>
-                                    <a href="character_intro.html" id="11">人物介绍</a>
-                                    <div id="22" class="cool shadowbox" style="text-align: center;display: none;">
-                                        <br>
-                                        <a href="character_intro.html?fire">火元素</a>
-                                        <br>
-                                        <br>
-                                        <a href="character_intro.html?water">水元素</a>
-                                        <br>
-                                        <br>
-                                        <a href="character_intro.html?land">土元素</a>
-                                        <br>
-                                        <br>
-                                        <a href="character_intro.html?wind">风元素</a>
-                                        <br>
-                                        <br>
-                                    </div>
-                                </li>
-                                <li>
-                                    <a href="game_demo.html">游戏演示</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col-lg-6 col-md-4 col-sm-4">
-                        <div class="collapse navbar-collapse text-center">
-                            <p class="artfont">Element's Land</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-4 col-sm-5">
-                        <div class="collapse navbar-collapse">
-                            <ul class="nav navbar-nav">
-                                <li><a href="background_intro.html">游戏背景</a></li>
-                                <li><a href="rules_intro.html">玩法介绍</a></li>
-                                <li><a href="about_us.html">关于我们</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--.nav-collapse -->
+			</div>
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-3 col-md-4 col-sm-3">
+						<div class="collapse navbar-collapse">
+							<ul class="nav navbar-nav">
+								<li><a href="index_new.html">主页</a></li>
+								<li>
+									<a href="character_intro.html" id="11">人物介绍</a>
+									<div id="22" class="cool shadowbox" style="text-align: center;display: none;">
+										<br>
+										<a href="character_intro.html?fire">火元素</a>
+										<br>
+										<br>
+										<a href="character_intro.html?water">水元素</a>
+										<br>
+										<br>
+										<a href="character_intro.html?land">土元素</a>
+										<br>
+										<br>
+										<a href="character_intro.html?wind">风元素</a>
+										<br>
+										<br>
+									</div>
+								</li>
+								<li>
+									<a href="game_demo.html">游戏演示</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-6 col-md-4 col-sm-4">
+						<div class="collapse navbar-collapse text-center">
+							<p class="artfont">Element's Land</p>
+						</div>
+					</div>
+					<div class="col-lg-3 col-md-4 col-sm-5">
+						<div class="collapse navbar-collapse">
+							<ul class="nav navbar-nav">
+								<li><a href="background_intro.html">游戏背景</a></li>
+								<li><a href="rules_intro.html">玩法介绍</a></li>
+								<li><a href="about_us.html">关于我们</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--.nav-collapse -->
 
-        </div>
-    </nav>
-    <div class="container shadowbox">
-        <div class="row">
-            <div class="col-md-3">
-                <div class="row player-panel">
-                    <div class="shadowbox land">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div><img src="images/land/land_element2.png" class="img-responsive" id="com2"></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-7"><img src="images/land/land_cell.png" class="cell"><span id="com2Num" class="cutetext"></span></div>
-                            <div class="col-md-5">
-                                <button class="btn btn-success" id="com2dis">发散</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row player-panel">
-                    <div class="shadowbox wind">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div><img src="images/wind/wind_element2.png" class="img-responsive" id="com3"></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-7"><img src="images/wind/wind_cell.png" class="cell"><span id="com3Num" class="cutetext"></span></div>
-                            <div class="col-md-5">
-                                <button class="btn btn-success" id="com3dis">发散</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div id="info" class="shadowbox text-center lead"></div>
-                <div id="map" class="game-container shadowbox content" style="margin: auto;"></div>
+		</div>
+	</nav>
+	<div class="container shadowbox">
+		<div class="row">
+			<div class="col-md-3">
+				<div class="row player-panel">
+					<div class="shadowbox land">
+						<div class="row">
+							<div class="col-md-12">
+								<div><img src="images/land/land_element2.png" class="img-responsive" id="com2"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-7"><img src="images/land/land_cell.png" class="cell"><span id="com2Num" class="cutetext"></span></div>
+							<div class="col-md-5">
+								<button class="btn btn-success" id="com2dis">发散</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row player-panel">
+					<div class="shadowbox wind">
+						<div class="row">
+							<div class="col-md-12">
+								<div><img src="images/wind/wind_element2.png" class="img-responsive" id="com3"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-7"><img src="images/wind/wind_cell.png" class="cell"><span id="com3Num" class="cutetext"></span></div>
+							<div class="col-md-5">
+								<button class="btn btn-success" id="com3dis">发散</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div id="info" class="shadowbox text-center lead"></div>
+				<div id="map" class="game-container shadowbox content" style="margin: auto;"></div>
 
-            </div>
-            <div class="col-md-3">
-                <div class="row player-panel">
-                    <div class="shadowbox water">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div><img src="images/water/water_element2.png" class="img-responsive" id="com1"></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-7"><img src="images/water/water_cell.png" class="cell"><span id="com1Num" class="cutetext"></span></div>
-                            <div class="col-md-5">
-                                <button class="btn btn-success" id="com1dis">发散</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row player-panel">
-                    <div class="shadowbox fire">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div id="player1"><img src="images/fire/fire_element2.png" class="img-responsive"></div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-7"><img src="images/fire/fire_cell.png" class="cell"><span id="player1Num" class="cutetext"></span></div>
-                            <div class="col-md-5">
-                                <button class="btn btn-success" id="player1dis">发散</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="container">
-        <div class="row shadowbox copyright">
-            <div class="col-lg-offset-1 col-lg-3 col-md-4">
-                <img class="logo" src="images/logo_team.png">
-            </div>
-            <div class="col-lg-7 col-md-8 text-justify">
-                <p><span>Team简介┊About Team┊广告服务┊联系我们┊招聘信息┊网站律师┊通行证注册┊产品答疑</span></p>
-                <p>Copyright © 1997-2015 Team609, All Rights Reserved</p>
-                <p>Team609 版权所有</p>
-            </div>
-        </div>
-    </div>
+			</div>
+			<div class="col-md-3">
+				<div class="row player-panel">
+					<div class="shadowbox water">
+						<div class="row">
+							<div class="col-md-12">
+								<div><img src="images/water/water_element2.png" class="img-responsive" id="com1"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-7"><img src="images/water/water_cell.png" class="cell"><span id="com1Num" class="cutetext"></span></div>
+							<div class="col-md-5">
+								<button class="btn btn-success" id="com1dis">发散</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row player-panel">
+					<div class="shadowbox fire">
+						<div class="row">
+							<div class="col-md-12">
+								<div id="player1"><img src="images/fire/fire_element2.png" class="img-responsive"></div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-7"><img src="images/fire/fire_cell.png" class="cell"><span id="player1Num" class="cutetext"></span></div>
+							<div class="col-md-5">
+								<button class="btn btn-success" id="player1dis">发散</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row shadowbox copyright">
+			<div class="col-lg-offset-1 col-lg-3 col-md-4">
+				<img class="logo" src="images/logo_team.png">
+			</div>
+			<div class="col-lg-7 col-md-8 text-justify">
+				<p><span>Team简介┊About Team┊广告服务┊联系我们┊招聘信息┊网站律师┊通行证注册┊产品答疑</span></p>
+				<p>Copyright © 1997-2015 Team609, All Rights Reserved</p>
+				<p>Team609 版权所有</p>
+			</div>
+		</div>
+	</div>
 </body>
 
 </html>
