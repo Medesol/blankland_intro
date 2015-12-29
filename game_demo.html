@@ -30,6 +30,9 @@
 		<source src="sounds/distribute.mp3" />
 		<source src="sounds/distribute.wav" />
 	</audio>
+	<audio id="bgm" autoplay>
+		<source src="sounds/background.mp3" />
+	</audio>
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/game_container.js"></script>
 	<script src="js/game_demo.js"></script>
@@ -41,11 +44,13 @@
 			sound.hurt = $("#hurtSound")[0];
 			sound.severe = $("#severeSound")[0];
 			sound.distribute = $("#distributeSound")[0];
-			sound.click.volume = 0.2;
-			sound.grow.volume = 0.1;
-			sound.hurt.volume = 0.6;
+			var bgm = $("#bgm")[0];
+			sound.click.volume = 0.5;
+			sound.grow.volume = 0.3;
+			sound.hurt.volume = 0.9;
 			sound.severe.volume = 1;
-			sound.distribute.volume = 0.2;
+			sound.distribute.volume = 0.5;
+			bgm.volume = 0.1;
 			var player1 = new Player($("#player1"), "fire");
 			var com1 = new Player($("#com1"), "water");
 			var com2 = new Player($("#com2"), "land");
