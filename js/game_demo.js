@@ -148,7 +148,7 @@ function GameDemo(map, player, com1, com2, com3) {
 	com2.isPlayer = true;
 	com3.isPlayer = true;
 	this.loadNumberSign = function (currplayer, numjquerydom) {
-		currplayer.numberSign = new NumberSign(300, numjquerydom);
+		currplayer.numberSign = new NumberSign(500, numjquerydom);
 	};
 
 	var nextPlayer = function (p) {
