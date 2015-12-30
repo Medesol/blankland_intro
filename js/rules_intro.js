@@ -31,7 +31,7 @@ $(function () {
         }
     }
     $("#distribute").click(function () {
-        conDistribute.animateDistribute(playerDistribute, "fire", playerDistribute.jquerydom.offset());
+        conDistribute.animateDistribute(playerDistribute);
     });
 
     var mapshow;

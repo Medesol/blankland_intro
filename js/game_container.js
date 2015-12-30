@@ -1,3 +1,5 @@
+var sound = new Object();
+
 function Fog(jquerydom) {
 	'use strict';
 	this.jquerydom = jquerydom;
@@ -7,6 +9,9 @@ function Fog(jquerydom) {
 	this.disappear = function () {
 		//this.jquerydom.
 		var x = this.jquerydom.position();
+		if (sound.click !== undefined) {
+			sound.click.play();
+		}
 		this.jquerydom.css("position", "absolute");
 		this.jquerydom.css("left", x.left + "px");
 		this.jquerydom.css("top", x.top + "px");
@@ -190,6 +195,9 @@ function Player(jquerydom, elementType) {
 	this.type = elementType;
 	this.jquerydom = jquerydom;
 	this.grow = function () {
+		if (sound.grow !== undefined) {
+			sound.grow.play();
+		}
 		jquerydom.animate({
 			opacity: 0.5
 		}, 100).animate({
@@ -197,16 +205,21 @@ function Player(jquerydom, elementType) {
 		}, 100);
 	};
 	this.hurt = function () {
+		if (sound.hurt !== undefined) {
+			sound.hurt.play();
+		}
 		var curroffset = jquerydom.offset();
 		var tempdom = jquerydom.clone();
-		tempdom.css({visibility: "hidden"});
+		tempdom.css({
+			visibility: "hidden"
+		});
 		jquerydom.after(tempdom);
 		var currcss = jquerydom.css("position");
 		jquerydom.css({
 			position: "absolute"
 		});
 		jquerydom.offset(curroffset);
-		
+
 		jquerydom.animate({
 			left: "-=5px"
 		}, 10);
@@ -229,9 +242,14 @@ function Player(jquerydom, elementType) {
 		});
 	};
 	this.severeHurt = function () {
+		if (sound.severe !== undefined) {
+			sound.severe.play();
+		}
 		var curroffset = jquerydom.offset();
 		var tempdom = jquerydom.clone();
-		tempdom.css({visibility: "hidden"});
+		tempdom.css({
+			visibility: "hidden"
+		});
 		jquerydom.after(tempdom);
 		var currcss = jquerydom.css("position");
 		jquerydom.css({
@@ -331,11 +349,18 @@ function GameContainer(map) {
 		var ele0 = new Element(player.type, getFitOffset(player), getRandomMapOffset());
 		var ele1 = new Element(player.type, getFitOffset(player), getRandomMapOffset());
 		var ele2 = new Element(player.type, getFitOffset(player), getRandomMapOffset(), callback);
+		if (sound.distribute !== undefined) {
+			sound.distribute.play();
+		}
 	};
 	var dis = this.animateDistribute;
 	this.animatePlayerDistribute = function (player, element, cellPos, callback) {
-		var ele = new Element(element, cellPos, getFitOffset(player), function (){
-			dis(player,callback);
+
+		var ele = new Element(element, cellPos, getFitOffset(player), function () {
+			if (sound.distribute !== undefined) {
+				sound.distribute.play();
+			}
+			dis(player, callback);
 		});
 	};
 }
